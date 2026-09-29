@@ -1,0 +1,31 @@
+{
+  "name": "Dino Land",
+  "short_name": "Dino Land",
+  "description": "A bilingual English and Russian dinosaur picture book for little kids: 20 cartoon dinosaurs, read-aloud facts, roars and simple games.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#EDF4E2",
+  "theme_color": "#3B8A45",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

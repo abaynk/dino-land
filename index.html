@@ -1,0 +1,1625 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="A bilingual English and Russian dinosaur picture book for little kids: 20 cartoon dinosaurs, read-aloud facts, roars and simple games.">
+<meta name="theme-color" content="#EDF4E2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111A13" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Dino Land">
+<meta property="og:description" content="A bilingual English and Russian dinosaur picture book for little kids: 20 cartoon dinosaurs, read-aloud facts, roars and simple games.">
+<link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="icons/icon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Dino Land">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Dino Land</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800&family=RocknRoll+One&display=swap">
+<style>
+/* Layout: a sticker book. Chunky outlined cards on a fern-green page; each dinosaur gets its own little scene. */
+:root {
+  --bg: #EDF4E2;
+  --surface: #FFFDF6;
+  --ink: #1F2A1C;
+  --muted: #56644E;
+  --edge: #22301F;
+  --shadow: #22301F;
+  --leaf: #3B8A45;
+  --leaf-soft: #D3E9C6;
+  --on-leaf: #FFFFFF;
+  --sun: #FFC43B;
+  --sun-soft: #FFEDB8;
+  --lava: #EE6034;
+  --on-lava: #FFFFFF;
+  --land: #E2EFC4;
+  --sea: #CFEAF5;
+  --sky: #DFEFFA;
+  --pink: #F58CA3;
+  --blue: #4DA3D9;
+  --scene-sky: #BCE4F4;
+  --scene-sky2: #E9F7FB;
+  --scene-far: #C4DCA9;
+  --scene-hill: #9BCB6A;
+  --scene-ground: #86BA55;
+  --volcano: #9C8672;
+  --smoke: #E4E1DA;
+  --cloud: #FFFFFF;
+  --sun-disc: #FFD35A;
+  --sea-top: #86CBEA;
+  --sea-deep: #3B8CC2;
+  --sand: #EBD7A4;
+  --weed: #3E9E6A;
+  --star-off: #D9DFD2;
+  --font-display: "RocknRoll One", "Arial Rounded MT Bold", "Trebuchet MS", system-ui, sans-serif;
+  --font-body: "M PLUS Rounded 1c", "Nunito", "Segoe UI", system-ui, sans-serif;
+  --r-lg: 26px;
+  --r-md: 18px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111A13; --surface: #1B271D; --ink: #EDF3E5; --muted: #A5B59E; --edge: #45593F; --shadow: #060A06;
+    --leaf: #5DB266; --leaf-soft: #274229; --on-leaf: #0E1A0F; --sun: #F6B82C; --sun-soft: #3F3316; --lava: #F2774D; --on-lava: #1C0C05;
+    --land: #223322; --sea: #172D39; --sky: #1D2B3A; --pink: #F07F99; --blue: #5CB0E4;
+    --scene-sky: #1B2A4B; --scene-sky2: #2D406A; --scene-far: #25391F; --scene-hill: #2F4E2A; --scene-ground: #3B5E33;
+    --volcano: #3D322C; --smoke: #4C4E57; --cloud: #7F8BA6; --sun-disc: #F3EBC6;
+    --sea-top: #1F5F88; --sea-deep: #0E3452; --sand: #5E5134; --weed: #2F7550; --star-off: #34412F;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111A13; --surface: #1B271D; --ink: #EDF3E5; --muted: #A5B59E; --edge: #45593F; --shadow: #060A06;
+  --leaf: #5DB266; --leaf-soft: #274229; --on-leaf: #0E1A0F; --sun: #F6B82C; --sun-soft: #3F3316; --lava: #F2774D; --on-lava: #1C0C05;
+  --land: #223322; --sea: #172D39; --sky: #1D2B3A; --pink: #F07F99; --blue: #5CB0E4;
+  --scene-sky: #1B2A4B; --scene-sky2: #2D406A; --scene-far: #25391F; --scene-hill: #2F4E2A; --scene-ground: #3B5E33;
+  --volcano: #3D322C; --smoke: #4C4E57; --cloud: #7F8BA6; --sun-disc: #F3EBC6;
+  --sea-top: #1F5F88; --sea-deep: #0E3452; --sand: #5E5134; --weed: #2F7550; --star-off: #34412F;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 17px; line-height: 1.5; font-weight: 500;
+  -webkit-tap-highlight-color: transparent;
+}
+button { font: inherit; color: inherit; cursor: pointer; touch-action: manipulation; }
+button:focus-visible, [tabindex]:focus-visible { outline: 4px solid var(--sun); outline-offset: 3px; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; margin: 0; text-wrap: balance; line-height: 1.15; }
+svg { display: block; }
+
+/* chunky "sticker" button base */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 56px; padding: 0 22px; border-radius: 999px;
+  border: 3px solid var(--edge); background: var(--surface); color: var(--ink);
+  box-shadow: 0 5px 0 var(--shadow); font-weight: 800; font-size: 18px;
+  transition: transform .08s ease, box-shadow .08s ease;
+  user-select: none; -webkit-user-select: none;
+}
+.btn:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--shadow); }
+.btn svg { width: 26px; height: 26px; flex: none; }
+.btn-leaf { background: var(--leaf); color: var(--on-leaf); }
+.btn-lava { background: var(--lava); color: var(--on-lava); }
+.btn-sun { background: var(--sun); color: #2A2208; }
+.round { width: 56px; padding: 0; }
+
+/* header */
+.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+  background: var(--bg); border-bottom: 3px solid var(--edge);
+}
+.top-inner {
+  max-width: 1180px; margin: 0 auto; padding: 10px 16px;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+}
+.brand { display: flex; align-items: center; gap: 10px; min-width: 0; border: 0; background: none; padding: 0; }
+.brand .print { width: 36px; height: 36px; color: var(--leaf); flex: none; transform: rotate(-12deg); }
+.brand-name { font-family: var(--font-display); font-size: clamp(20px, 5vw, 28px); white-space: nowrap; letter-spacing: .01em; }
+.controls { display: flex; align-items: center; gap: 10px; flex: none; }
+.lang { display: flex; border: 3px solid var(--edge); border-radius: 999px; box-shadow: 0 4px 0 var(--shadow); overflow: hidden; background: var(--surface); }
+.lang button { border: 0; background: transparent; min-width: 48px; height: 46px; font-weight: 800; font-size: 17px; letter-spacing: .04em; }
+.lang button[aria-pressed="true"] { background: var(--leaf); color: var(--on-leaf); }
+.icon-btn { width: 50px; height: 50px; min-height: 0; padding: 0; }
+@media (max-width: 380px) { .brand .print { display: none; } }
+.icon-btn[aria-pressed="false"] { background: var(--star-off); }
+
+.wrap { max-width: 1180px; margin: 0 auto; padding: 18px 16px 48px; }
+
+/* tabs */
+.tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+.tab { min-height: 64px; font-size: 20px; font-family: var(--font-display); font-weight: 400; border-radius: var(--r-md); }
+.tab svg { width: 34px; height: 34px; }
+.tab[aria-selected="true"] { background: var(--leaf); color: var(--on-leaf); }
+
+/* list view */
+.hint { display: flex; align-items: center; gap: 10px; margin: 0 0 14px; font-family: var(--font-display); font-size: clamp(20px, 4.6vw, 26px); }
+.hint .trail { display: flex; gap: 4px; color: var(--leaf); }
+.hint .trail svg { width: 20px; height: 20px; }
+.hint .trail svg:nth-child(odd) { transform: translateY(5px) rotate(80deg); }
+.hint .trail svg:nth-child(even) { transform: rotate(100deg); }
+.filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+.chip { min-height: 48px; padding: 0 16px; font-size: 16px; border-radius: 999px; }
+.chip svg { width: 22px; height: 22px; }
+.chip[aria-pressed="true"] { background: var(--sun); color: #2A2208; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(158px, 1fr)); gap: 16px; }
+@media (min-width: 720px) { .grid { grid-template-columns: repeat(auto-fill, minmax(196px, 1fr)); gap: 20px; } }
+.card {
+  display: flex; flex-direction: column; padding: 0; overflow: hidden; text-align: left;
+  border: 3px solid var(--edge); border-radius: var(--r-lg); background: var(--surface);
+  box-shadow: 0 6px 0 var(--shadow); transition: transform .1s ease, box-shadow .1s ease;
+}
+.card:active { transform: translateY(5px); box-shadow: 0 1px 0 var(--shadow); }
+.card-art { background: var(--land); padding: 10px 8px 4px; border-bottom: 3px solid var(--edge); }
+.card-art.sea { background: var(--sea); }
+.card-art.sky { background: var(--sky); }
+.card-art svg { width: 100%; height: auto; }
+.card-name { padding: 10px 12px 12px; font-family: var(--font-display); font-size: 18px; line-height: 1.2; min-width: 0; overflow-wrap: break-word; hyphens: manual; }
+@media (hover: hover) {
+  .card:hover { transform: translateY(-3px); box-shadow: 0 9px 0 var(--shadow); }
+  .card:hover .dz-body { animation: wiggle .6s ease-in-out; }
+}
+
+/* dinosaur drawing animation */
+.dz .dz-body { transform-box: fill-box; transform-origin: 50% 100%; }
+.dz .dz-eye { transform-box: fill-box; transform-origin: center; animation: blink 5.5s infinite; animation-delay: var(--bd, 0s); }
+@keyframes blink { 0%, 94%, 100% { transform: scaleY(1); } 96.5% { transform: scaleY(.1); } }
+@keyframes wiggle { 0%,100% { transform: rotate(0); } 30% { transform: rotate(-3deg); } 65% { transform: rotate(2.5deg); } }
+@keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-3px) scale(1.01, .995); } }
+@keyframes roar { 0% { transform: scale(1); } 15% { transform: scale(1.1) rotate(-2deg); } 30% { transform: scale(1.08) rotate(2deg); } 45% { transform: scale(1.1) rotate(-2deg); } 60% { transform: scale(1.07) rotate(1.5deg); } 100% { transform: scale(1) rotate(0); } }
+@keyframes swim { 0%,100% { transform: translate(0,0) rotate(0); } 50% { transform: translate(6px,-5px) rotate(-1.5deg); } }
+@keyframes fly { 0%,100% { transform: translateY(0) scaleY(1); } 50% { transform: translateY(-8px) scaleY(.94); } }
+
+/* detail view */
+.detail-nav { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+.counter { font-weight: 800; color: var(--muted); font-variant-numeric: tabular-nums; }
+.detail-grid { display: grid; gap: 22px; }
+@media (min-width: 900px) {
+  .detail-grid { grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); gap: 32px; align-items: start; }
+  .stage-col { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 86px); }
+}
+.stage {
+  position: relative; overflow: hidden; border: 3px solid var(--edge); border-radius: var(--r-lg);
+  box-shadow: 0 6px 0 var(--shadow); aspect-ratio: 4 / 3; max-width: 100%; background: var(--scene-sky);
+  touch-action: pan-y;
+}
+.stage .scene { position: absolute; inset: 0; width: 100%; height: 100%; }
+.stage-dino {
+  position: absolute; left: 7%; right: 7%; bottom: 6%; border: 0; background: none; padding: 0;
+  border-radius: 20px;
+}
+.stage-dino svg { width: 100%; height: auto; }
+.stage-dino.land .dz-body { animation: bob 2.6s ease-in-out infinite; }
+.stage-dino.sea { bottom: 16%; }
+.stage-dino.sea .dz-body { animation: swim 3.2s ease-in-out infinite; }
+.stage-dino.sky { bottom: 22%; }
+.stage-dino.sky .dz-body { animation: fly 1.6s ease-in-out infinite; }
+.stage-dino.roaring .dz-body { animation: roar .9s ease-in-out; }
+.tap-me {
+  position: absolute; left: 14px; top: 12px; padding: 6px 14px; border-radius: 999px;
+  background: var(--surface); border: 3px solid var(--edge); font-weight: 800; font-size: 15px;
+  display: flex; align-items: center; gap: 6px; pointer-events: none;
+}
+.tap-me svg { width: 18px; height: 18px; color: var(--lava); }
+.bubble {
+  position: absolute; right: 8%; top: 9%; padding: 10px 18px; border-radius: 26px;
+  background: #FFFFFF; color: #1F2A1C; border: 3px solid var(--edge);
+  font-family: var(--font-display); font-size: clamp(22px, 5.5vw, 34px); letter-spacing: .02em;
+  transform-origin: 20% 100%; animation: pop .35s cubic-bezier(.2,1.6,.4,1) both; pointer-events: none;
+}
+.bubble::after { content: ""; position: absolute; left: 22px; bottom: -14px; width: 18px; height: 18px; background: #FFFFFF; border-right: 3px solid var(--edge); border-bottom: 3px solid var(--edge); transform: rotate(45deg) skew(8deg, 8deg); }
+@keyframes pop { from { transform: scale(.3); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.pager { display: flex; align-items: center; gap: 10px; }
+.pager .btn { width: 52px; min-height: 52px; height: 52px; }
+.pager .btn svg { width: 24px; height: 24px; }
+
+.name-block { margin-top: 18px; }
+.dino-name { font-size: clamp(30px, 7.2vw, 46px); overflow-wrap: break-word; }
+.dino-name button { all: unset; cursor: pointer; }
+.dino-name button:focus-visible { outline: 4px solid var(--sun); outline-offset: 3px; border-radius: 8px; }
+.meaning { margin: 4px 0 0; color: var(--muted); font-size: 18px; font-weight: 700; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
+.actions .btn { flex: 1 1 150px; min-height: 64px; font-size: 20px; }
+.actions .btn svg { width: 30px; height: 30px; }
+
+.stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.stat {
+  display: flex; gap: 12px; align-items: flex-start; padding: 14px; min-width: 0;
+  background: var(--surface); border: 3px solid var(--edge); border-radius: var(--r-md);
+}
+.stat-ico { flex: none; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--leaf-soft); color: var(--leaf); }
+.stat-ico svg { width: 26px; height: 26px; }
+.stat.eats-meat .stat-ico, .stat.eats-fish .stat-ico { background: var(--sun-soft); color: var(--lava); }
+.stat-body { min-width: 0; }
+.stat-label { font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.stat-value { font-weight: 800; font-size: 18px; line-height: 1.3; overflow-wrap: break-word; }
+.stat-sub { font-size: 15px; color: var(--muted); line-height: 1.35; }
+@media (max-width: 420px) { .stat { flex-direction: column; gap: 8px; padding: 12px; } }
+
+.panel { margin-top: 18px; padding: 18px; background: var(--surface); border: 3px solid var(--edge); border-radius: var(--r-md); }
+.panel h2 { font-size: 22px; margin-bottom: 8px; }
+.panel p { margin: 0; }
+.kids { display: flex; flex-wrap: wrap; gap: 6px 4px; margin-top: 12px; }
+.kids svg { width: 18px; height: 30px; }
+.kids svg:nth-child(4n+1) { color: var(--lava); } .kids svg:nth-child(4n+2) { color: var(--blue); }
+.kids svg:nth-child(4n+3) { color: var(--sun); } .kids svg:nth-child(4n) { color: var(--pink); }
+.facts { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.facts li { display: flex; gap: 12px; align-items: center; }
+.facts .say { width: 48px; height: 48px; min-height: 0; padding: 0; flex: none; box-shadow: 0 4px 0 var(--shadow); }
+.facts .say svg { width: 24px; height: 24px; }
+.facts span { min-width: 0; font-size: 18px; line-height: 1.4; }
+
+/* games */
+.game-menu { display: grid; gap: 18px; }
+@media (min-width: 760px) { .game-menu { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.game-tile { display: flex; flex-direction: column; padding: 0; overflow: hidden; text-align: left; border-radius: var(--r-lg); border: 3px solid var(--edge); box-shadow: 0 6px 0 var(--shadow); background: var(--surface); }
+.game-tile:active { transform: translateY(5px); box-shadow: 0 1px 0 var(--shadow); }
+.game-art { display: flex; align-items: flex-end; justify-content: center; gap: 4px; padding: 14px 12px 8px; background: var(--sun-soft); border-bottom: 3px solid var(--edge); min-height: 150px; }
+.game-art svg { width: 44%; height: auto; }
+.game-art .ill { width: 30%; }
+.game-tile:nth-child(2) .game-art { background: var(--leaf-soft); }
+.game-tile:nth-child(3) .game-art { background: var(--sky); }
+.game-title { padding: 14px 16px 4px; font-family: var(--font-display); font-size: 23px; }
+.game-desc { padding: 0 16px 16px; color: var(--muted); font-size: 16px; }
+
+.play-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+.stars { display: flex; gap: 4px; }
+.stars svg { width: 34px; height: 34px; color: var(--star-off); }
+.stars svg.on { color: var(--sun); animation: pop .4s cubic-bezier(.2,1.6,.4,1); }
+.prompt { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+.prompt h2 { font-size: clamp(24px, 6vw, 36px); min-width: 0; }
+.prompt .btn { flex: none; }
+.choices { display: grid; gap: 14px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.choices.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 560px) {
+  .choices { gap: 12px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .choices:not(.two) .choice:nth-child(3) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 6px); }
+  .choice { border-radius: var(--r-md); } .choice .ch-label { font-size: 18px; }
+}
+.choice { padding: 0; overflow: hidden; border-radius: var(--r-lg); border: 3px solid var(--edge); box-shadow: 0 6px 0 var(--shadow); background: var(--land); display: flex; flex-direction: column; align-items: stretch; justify-content: flex-end; }
+.choice:active { transform: translateY(5px); box-shadow: 0 1px 0 var(--shadow); }
+.choice.sea { background: var(--sea); } .choice.sky { background: var(--sky); }
+.choice .ch-art { padding: 12px 10px 6px; display: flex; align-items: flex-end; justify-content: center; }
+.choice .ch-art svg { width: 100%; height: auto; }
+.choice .ch-label { background: var(--surface); border-top: 3px solid var(--edge); padding: 10px; font-family: var(--font-display); font-size: 22px; text-align: center; }
+.choice.food { background: var(--surface); }
+.choice.food .ch-art { background: var(--leaf-soft); min-height: 150px; align-items: center; }
+.choice.food.meat .ch-art { background: var(--sun-soft); }
+.choice.food .ch-art svg { width: 62%; max-width: 170px; }
+.choice.right { background: var(--leaf-soft); border-color: var(--leaf); animation: pop .4s ease; }
+.choice.nope { animation: shake .45s ease; }
+@keyframes shake { 0%,100% { transform: translateX(0); } 20% { transform: translateX(-10px); } 40% { transform: translateX(9px); } 60% { transform: translateX(-6px); } 80% { transform: translateX(4px); } }
+.eat-hero { display: flex; flex-direction: column; align-items: center; margin-bottom: 16px; }
+.eat-hero .card-art { width: min(100%, 360px); border: 3px solid var(--edge); border-radius: var(--r-lg); box-shadow: 0 6px 0 var(--shadow); }
+.big-art { height: 100%; display: flex; align-items: flex-end; justify-content: center; }
+.big-art svg { transform-origin: 50% 100%; }
+.win { text-align: center; padding: 10px 0 20px; }
+.win .dance { width: min(100%, 380px); margin: 0 auto; }
+.win .dance .dz-body { animation: roar 1s ease-in-out infinite; }
+.win h2 { font-size: clamp(32px, 8vw, 52px); margin: 12px 0 6px; }
+.win p { color: var(--muted); font-weight: 700; margin: 0 0 20px; }
+.win-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+
+.foot { margin-top: 36px; color: var(--muted); font-size: 14px; max-width: 65ch; }
+.foot.credits { margin-top: 8px; font-size: 13px; }
+
+#confetti { position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 50; }
+#confetti i { position: absolute; top: -20px; width: 12px; height: 16px; border-radius: 3px; animation: fall 1.7s ease-in forwards; }
+@keyframes fall { to { transform: translateY(110vh) rotate(var(--rot)); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition: none !important; }
+}
+</style>
+<style>
+/* page reset (the artifact host supplied this before) */
+:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+body { margin: 0; min-height: 100vh; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-inner">
+    <button class="brand" id="brand" type="button" aria-label="Home">
+      <svg class="print" viewBox="0 0 48 48" aria-hidden="true"><use href="#i-print"/></svg>
+      <span class="brand-name" data-t="app">Dino Land</span>
+    </button>
+    <div class="controls">
+      <div class="lang" role="group" aria-label="Language / Язык">
+        <button id="lang-en" type="button" data-lang="en" aria-pressed="false">EN</button>
+        <button id="lang-ru" type="button" data-lang="ru" aria-pressed="false">РУ</button>
+      </div>
+      <button id="sound" class="btn icon-btn" type="button" aria-pressed="true"></button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <nav class="tabs" role="tablist">
+    <button id="tab-dinos" class="btn tab" type="button" role="tab" aria-selected="true"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-print"/></svg><span data-t="tabDinos">Dinosaurs</span></button>
+    <button id="tab-games" class="btn tab" type="button" role="tab" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star"/></svg><span data-t="tabGames">Games</span></button>
+  </nav>
+
+  <main>
+    <section id="view-list">
+      <p class="hint"><span data-t="tapHint">Tap a dinosaur!</span><span class="trail" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#i-print"/></svg><svg viewBox="0 0 48 48"><use href="#i-print"/></svg><svg viewBox="0 0 48 48"><use href="#i-print"/></svg></span></p>
+      <div class="filters" id="filters"></div>
+      <div class="grid" id="grid"></div>
+      <p class="foot" data-t="foot"></p>
+      <p class="foot credits" data-t="credits"></p>
+    </section>
+    <section id="view-dino" hidden></section>
+    <section id="view-games" hidden></section>
+    <section id="view-play" hidden></section>
+  </main>
+</div>
+<div id="confetti" aria-hidden="true"></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-print" viewBox="0 0 48 48"><g fill="currentColor"><path d="M24 45c-7.5 0-11.5-5.2-9.4-11.4C16.2 28.8 19.8 26 24 26s7.8 2.8 9.4 7.6C35.5 39.8 31.5 45 24 45z"/><path d="M24 3c3.2 5.2 4.3 10.4 3.3 16.5-.5 2.6-6.1 2.6-6.6 0C19.7 13.4 20.8 8.2 24 3z"/><path d="M24 3c3.2 5.2 4.3 10.4 3.3 16.5-.5 2.6-6.1 2.6-6.6 0C19.7 13.4 20.8 8.2 24 3z" transform="rotate(-38 24 30)"/><path d="M24 3c3.2 5.2 4.3 10.4 3.3 16.5-.5 2.6-6.1 2.6-6.6 0C19.7 13.4 20.8 8.2 24 3z" transform="rotate(38 24 30)"/></g></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" style="stroke:var(--edge)" stroke-width="1.6" stroke-linejoin="round" d="M12 2.6l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></symbol>
+    <symbol id="i-speaker" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5h3.5L12.5 5v14l-5-4.5H4z" fill="currentColor"/><path d="M16 9a4.5 4.5 0 0 1 0 6"/><path d="M18.6 6.4a8.2 8.2 0 0 1 0 11.2"/></g></symbol>
+    <symbol id="i-mute" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5h3.5L12.5 5v14l-5-4.5H4z" fill="currentColor"/><path d="M16.5 9.5l5 5M21.5 9.5l-5 5"/></g></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M11 5l-7 7 7 7M4.5 12H20"/></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" d="M15 4.5L7.5 12l7.5 7.5"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" d="M9 4.5l7.5 7.5L9 19.5"/></symbol>
+    <symbol id="i-roar" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M3 12h3M4 6.5l2.6 1.6M4 17.5l2.6-1.6"/><path d="M9 6.5c3.5-2 9-1 11 2.5l-4.5 2.2L21 13c-1.5 4-7 5.5-11.5 3.2" stroke-linejoin="round"/></g></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 19.5C4 11 9.5 4.5 20 4.5c.4 10-5.6 15.3-14 15"/><path d="M4.5 19.5L13 11"/></g></symbol>
+    <symbol id="i-meat" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 3.5c3.6 0 6 2.6 6 6 0 4.2-4.1 6.5-7.8 5.6L9.6 18.2a2.3 2.3 0 1 1-3 2.8 2.3 2.3 0 1 1-2.8-3l3.1-3.1C6 11 8.6 3.5 14.5 3.5z"/></g></symbol>
+    <symbol id="i-fish" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c3-4.5 8.5-6 13-3.2L20.5 6v12L16 15.2C11.5 18 6 16.5 3 12z"/><circle cx="8" cy="11" r=".6" fill="currentColor"/></g></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3h11M6.5 21h11M8 3c0 5 8 5 8 9s-8 4-8 9M16 3c0 5-8 5-8 9s8 4 8 9"/></g></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3.5 9.5h17M3.5 14.5h17M12 3c-3 3.5-3 14.5 0 18M12 3c3 3.5 3 14.5 0 18"/></g></symbol>
+    <symbol id="i-weight" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7.5a3 3 0 1 1 6 0"/><path d="M6.5 8h11l2.3 12H4.2z"/></g></symbol>
+    <symbol id="i-wave" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 9c2.4-2.4 4.2-2.4 6.3 0s4.1 2.4 6.3 0 4.1-2.4 6.4 0M2.5 15.5c2.4-2.4 4.2-2.4 6.3 0s4.1 2.4 6.3 0 4.1-2.4 6.4 0"/></g></symbol>
+    <symbol id="i-all" viewBox="0 0 24 24"><g fill="currentColor"><circle cx="7" cy="7" r="3"/><circle cx="17" cy="7" r="3"/><circle cx="7" cy="17" r="3"/><circle cx="17" cy="17" r="3"/></g></symbol>
+    <symbol id="i-hand" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11V4.5a1.7 1.7 0 0 1 3.4 0V10l4.6.9c1.6.3 2.6 1.9 2.2 3.5l-1.3 5.1A3 3 0 0 1 15 21.8h-3.6a3 3 0 0 1-2.4-1.2L5.2 15.4a1.8 1.8 0 0 1 2.6-2.4z"/></g></symbol>
+    <symbol id="i-kid" viewBox="0 0 16 26"><g fill="currentColor" style="stroke:var(--edge)" stroke-width="1.4" stroke-linejoin="round"><circle cx="8" cy="5.2" r="4.1"/><path d="M2.6 13.2c0-2.8 2.2-4.4 5.4-4.4s5.4 1.6 5.4 4.4v5.3h-2.6v6.3H5.2v-6.3H2.6z"/></g></symbol>
+  </defs>
+</svg>
+
+<script>
+/* ---------- Cartoon dinosaur drawing engine ---------- */
+const INK = '#22281f';
+const G = 160; // ground line
+let artSeq = 0;
+
+function hex2rgb(h){ h = h.replace('#',''); return [0,2,4].map(i => parseInt(h.slice(i,i+2),16)); }
+function mix(a,b,t){ const A = hex2rgb(a), B = hex2rgb(b); return '#' + A.map((v,i)=>Math.round(v+(B[i]-v)*t).toString(16).padStart(2,'0')).join(''); }
+function fx(n){ return Math.round(n*10)/10; }
+
+function smoothPath(pts, closed = true){
+  const n = pts.length;
+  let d = 'M' + fx(pts[0][0]) + ' ' + fx(pts[0][1]);
+  const segs = closed ? n : n - 1;
+  for (let i = 0; i < segs; i++){
+    const p0 = pts[closed ? (i-1+n)%n : Math.max(i-1,0)];
+    const p1 = pts[i], p2 = pts[(i+1)%n];
+    const p3 = pts[closed ? (i+2)%n : Math.min(i+2,n-1)];
+    let c1x = p1[0] + (p2[0]-p0[0])/6, c1y = p1[1] + (p2[1]-p0[1])/6;
+    let c2x = p2[0] - (p3[0]-p1[0])/6, c2y = p2[1] - (p3[1]-p1[1])/6;
+    if (p1[2]) { c1x = p1[0]; c1y = p1[1]; }
+    if (p2[2]) { c2x = p2[0]; c2y = p2[1]; }
+    d += ` C${fx(c1x)} ${fx(c1y)} ${fx(c2x)} ${fx(c2y)} ${fx(p2[0])} ${fx(p2[1])}`;
+  }
+  return closed ? d + 'Z' : d;
+}
+function polyPath(pts){ return 'M' + pts.map(p => fx(p[0]) + ' ' + fx(p[1])).join(' L') + 'Z'; }
+
+/* biped (theropod-style) leg: hip x/y, foot x, size */
+function bleg(hx, hy, fX, s, gy = G){
+  return [
+    [hx - s*0.95, hy - s*0.2], [hx - s*0.4, hy - s*0.75], [hx + s*0.55, hy - s*0.6],
+    [hx + s*0.95, hy + s*0.15], [hx + s*0.45, hy + s*0.85],
+    [fX + s*0.2, gy - s*0.8], [fX + s*0.4, gy - s*0.3], [fX + s*0.95, gy - s*0.14],
+    [fX + s*1.02, gy, 1], [fX - s*0.45, gy, 1], [fX - s*0.5, gy - s*0.35],
+    [fX - s*0.3, gy - s*0.85], [hx - s*0.6, hy + s*0.7]
+  ];
+}
+/* column leg for four-legged dinosaurs */
+function cleg(x, top, w, gy = G){
+  return [[x - w/2, top], [x + w/2, top], [x + w/2, gy - 10], [x + w/2 + 3, gy, 1], [x - w/2 - 2, gy, 1], [x - w/2, gy - 10]];
+}
+function nails(x, w, gy = G){
+  const r = w * 0.12;
+  return [x - w*0.22, x + w*0.1, x + w*0.42].map(nx => ['c', nx, gy - r*0.9, r, 'nail', {sw: 1.8}]);
+}
+/* back plate / spike: base centre, width, height, tip lean */
+function plate(cx, by, w, h, lean = 0){
+  return [[cx - w/2, by + 8], [cx - w*0.46, by - h*0.45], [cx + lean, by - h, 1], [cx + w*0.46, by - h*0.45], [cx + w/2, by + 8]];
+}
+function ring(cx, cy, r, n, bump){
+  const pts = [];
+  for (let i = 0; i < n; i++){ const a = i/n*Math.PI*2; const rr = r + (i%2 ? bump : 0); pts.push([cx + Math.cos(a)*rr, cy + Math.sin(a)*rr]); }
+  return pts;
+}
+
+const ART = {
+  trex: {
+    c: {body:'#6CB356', belly:'#E4F0AE'}, sh:[120, 78],
+    parts: [
+      ['b', bleg(98,104,106,19), 'far'],
+      ['b', [[10,92,1],[40,80],[75,66],[108,56],[140,52],[160,46],[168,30],[184,20],[208,18],[226,24],[234,34],[234,46],[228,56],[214,62],[192,64],[178,68],[168,82],[158,102],[136,116],[108,116],[84,104],[52,98],[28,96]], 'body', {id:'main'}],
+      ['b', [[172,64],[196,66],[186,90],[160,118],[110,126],[60,110],[64,101],[104,105],[140,100],[160,84]], 'belly', {clip:'main'}],
+      ['e', 96,62,5,9,'dark',{clip:'main'},-15], ['e', 120,55,5,9,'dark',{clip:'main'},-5], ['e', 144,51,5,8,'dark',{clip:'main'},5],
+      ['o','main'],
+      ['b', bleg(120,104,132,22), 'body'],
+      ['b', [[160,88],[176,92],[183,100],[180,104],[174,100],[160,98]], 'body'],
+      ['p', [[205,54],[207.5,58.5],[210,54]], 'white', {sw:1.6}], ['p', [[215,53],[217.5,57.5],[220,52.5]], 'white', {sw:1.6}],
+      ['l', [[182,50],[204,54],[228,48]]],
+      ['c', 227,31,1.8,'line',{ns:1}],
+      ['ck', 186,46,5], ['eye', 196,32,7.5]
+    ]
+  },
+  trike: {
+    c: {body:'#5AA7D6', belly:'#D5EBF7', acc:'#F4A640', acc2:'#FFF1D2'}, sh:[118, 84],
+    parts: [
+      ['b', cleg(76,110,20), 'far'], ['b', cleg(150,110,19), 'far'],
+      ['b', [[8,112,1],[30,98],[50,76],[80,62],[115,60],[145,66],[165,80],[172,100],[166,120],[140,130],[100,132],[62,128],[40,118],[24,114]], 'body', {id:'main'}],
+      ['b', [[20,122],[60,114],[110,118],[160,110],[176,120],[150,142],[60,142]], 'belly', {clip:'main'}],
+      ['c', 78,80,6,'dark',{clip:'main'}], ['c', 100,72,4.5,'dark',{clip:'main'}], ['c', 122,80,5.5,'dark',{clip:'main'}], ['c', 58,94,4,'dark',{clip:'main'}],
+      ['o','main'],
+      ['b', cleg(60,112,24), 'body'], ...nails(60,24),
+      ['b', cleg(138,112,23), 'body'], ...nails(138,23),
+      ['b', ring(168,80,36,16,4), 'acc', {id:'frill'}],
+      ['c', 168,80,24,'#F7C477',{ns:1}],
+      ['c', 150,58,3.2,'acc2',{sw:1.6}], ['c', 166,50,3.2,'acc2',{sw:1.6}], ['c', 184,54,3.2,'acc2',{sw:1.6}], ['c', 142,76,3.2,'acc2',{sw:1.6}],
+      ['b', [[176,74],[188,70],[200,54],[210,38,1],[192,58]], mix('#FFF1D2',INK,0.12)],
+      ['b', [[158,76],[186,68],[210,78],[226,92],[236,106,1],[224,112],[204,118],[180,118],[162,108]], 'body'],
+      ['b', [[184,76],[198,72],[212,58],[228,42,1],[204,60]], 'acc2'],
+      ['b', [[214,88],[226,90],[230,72,1]], 'acc2'],
+      ['l', [[200,106],[214,110],[226,106]]],
+      ['c', 226,96,1.6,'line',{ns:1}],
+      ['ck', 192,100,5], ['eye', 196,88,6.5]
+    ]
+  },
+  stego: {
+    c: {body:'#F0914A', belly:'#FCE2C2', acc:'#4DB39E', acc2:'#FFF1D2'}, sh:[112, 86],
+    parts: [
+      ['b', plate(48,92,16,22,-2), 'acc'], ['b', plate(66,80,20,30,-2), 'acc'], ['b', plate(87,68,22,38,0), 'acc'],
+      ['b', plate(109,66,22,38,2), 'acc'], ['b', plate(130,71,20,30,3), 'acc'], ['b', plate(148,84,16,22,3), 'acc'], ['b', plate(163,95,12,14,3), 'acc'],
+      ['b', [[18,104],[26,102],[6,84,1]], 'acc2'], ['b', [[28,100],[36,98],[22,76,1]], 'acc2'],
+      ['b', cleg(84,110,21), 'far'], ['b', cleg(148,118,15), 'far'],
+      ['b', [[6,106,1],[30,98],[60,78],[95,62],[125,66],[150,82],[168,94],[184,98],[200,100],[212,110],[208,120],[192,122],[176,120],[158,122],[120,134],[85,134],[60,126],[35,114],[18,110]], 'body', {id:'main'}],
+      ['b', [[20,118],[80,124],[150,116],[172,114],[200,114],[214,130],[120,150],[40,132]], 'belly', {clip:'main'}],
+      ['c', 90,90,5,'dark',{clip:'main'}], ['c', 110,86,4,'dark',{clip:'main'}], ['c', 70,98,4,'dark',{clip:'main'}], ['c', 128,94,4.5,'dark',{clip:'main'}],
+      ['o','main'],
+      ['b', cleg(70,108,25), 'body'], ...nails(70,25),
+      ['b', cleg(136,116,18), 'body'], ...nails(136,18),
+      ['l', [[196,113],[203,116],[209,113]]],
+      ['ck', 190,114,3.5], ['eye', 194,106,4.5]
+    ]
+  },
+  brachio: {
+    c: {body:'#9C82D4', belly:'#E7DDF8'}, sh:[96, 80],
+    parts: [
+      ['b', cleg(66,104,20), 'far'], ['b', cleg(146,96,21), 'far'],
+      ['b', [[6,120,1],[26,110],[46,92],[80,76],[118,66],[140,56],[152,40],[162,24],[170,14],[184,8],[198,10],[208,16],[210,24],[202,30],[188,32],[178,38],[170,54],[160,78],[154,100],[140,118],[110,124],[70,122],[46,114],[26,120]], 'body', {id:'main'}],
+      ['b', [[150,50],[180,40],[172,90],[152,122],[80,132],[40,122],[80,112],[140,100]], 'belly', {clip:'main'}],
+      ['c', 90,86,5,'dark',{clip:'main'}], ['c', 108,80,4,'dark',{clip:'main'}], ['c', 72,94,4,'dark',{clip:'main'}], ['c', 122,88,3.5,'dark',{clip:'main'}], ['c', 146,60,3,'dark',{clip:'main'}], ['c', 156,44,2.6,'dark',{clip:'main'}],
+      ['o','main'],
+      ['b', cleg(50,104,22), 'body'], ...nails(50,22),
+      ['b', cleg(130,96,24), 'body'], ...nails(130,24),
+      ['l', [[196,26],[206,24]]],
+      ['ck', 190,25,3.5], ['eye', 192,17,4.5]
+    ]
+  },
+  diplo: {
+    c: {body:'#E6BE48', belly:'#FAF0C6'}, sh:[112, 70],
+    parts: [
+      ['b', cleg(94,108,20), 'far'], ['b', cleg(146,108,18), 'far'],
+      ['b', [[4,132,1],[20,122],[44,104],[70,84],[100,72],[130,74],[152,74],[176,62],[198,48],[214,38],[228,38],[236,46],[230,54],[216,54],[200,62],[178,80],[164,100],[150,120],[120,128],[90,126],[70,116],[48,114],[26,126]], 'body', {id:'main'}],
+      ['b', [[150,70],[216,46],[224,60],[176,96],[150,128],[70,132],[60,120],[120,114]], 'belly', {clip:'main'}],
+      ['e', 84,80,4,9,'dark',{clip:'main'},-20], ['e', 104,75,4,9,'dark',{clip:'main'},-10], ['e', 124,74,4,9,'dark',{clip:'main'},0], ['e', 144,74,4,8,'dark',{clip:'main'},10],
+      ['o','main'],
+      ['b', cleg(80,108,22), 'body'], ...nails(80,22),
+      ['b', cleg(134,108,20), 'body'], ...nails(134,20),
+      ['l', [[222,50],[232,48]]],
+      ['ck', 216,49,3], ['eye', 220,43,4]
+    ]
+  },
+  ankylo: {
+    c: {body:'#C49A63', belly:'#F2DEBE', acc:'#8E6A43', acc2:'#F3E6CC'}, sh:[114, 96],
+    parts: [
+      ['b', [[48,102],[24,104],[18,114],[48,124]], 'body'],
+      ['e', 16,110,13,10,'acc2'],
+      ['b', cleg(68,118,20), 'far'], ['b', cleg(146,118,20), 'far'],
+      ['b', [[178,96],[186,92],[176,82,1]], 'acc2'],
+      ['b', [[34,112],[50,86],[80,70],[115,66],[150,72],[172,86],[186,94],[204,96],[216,104],[218,116],[208,126],[190,128],[176,124],[160,132],[120,136],[80,136],[52,130],[36,122]], 'body', {id:'main'}],
+      ['b', [[40,128],[120,128],[170,120],[196,122],[212,140],[40,150]], 'belly', {clip:'main'}],
+      ...[70,92,114,136,156].map(x => ['e', x,82,6,4.5,'acc',{clip:'main'}]),
+      ...[58,80,102,124,146,166].map(x => ['e', x,100,6,4.5,'acc',{clip:'main'}]),
+      ...[70,92,114,136].map(x => ['e', x,117,5,4,'acc',{clip:'main'}]),
+      ['o','main'],
+      ['b', cleg(56,120,24), 'body'], ...nails(56,24),
+      ['b', cleg(132,120,24), 'body'], ...nails(132,24),
+      ['l', [[204,118],[214,116]]],
+      ['ck', 196,114,3.5], ['eye', 200,106,4.5]
+    ]
+  },
+  raptor: {
+    c: {body:'#E86A4E', belly:'#FCD8C6', acc:'#2F8FB0'}, sh:[118, 60],
+    parts: [
+      ['b', [[4,66],[20,66],[24,76],[20,86],[4,84],[10,76]], 'acc'],
+      ['b', [[174,40],[158,32,1],[174,34],[162,22,1],[184,32]], 'acc'],
+      ['b', bleg(110,102,118,15), 'far'],
+      ['b', [[8,74,1],[40,76],[80,78],[108,76],[130,72],[150,62],[160,46],[172,36],[192,34],[214,38],[228,44],[226,52],[208,56],[190,56],[178,60],[172,76],[160,96],[134,110],[108,110],[88,98],[50,88],[20,82]], 'body', {id:'main'}],
+      ['b', [[172,56],[192,60],[180,90],[150,116],[100,118],[60,96],[100,100],[150,94],[166,70]], 'belly', {clip:'main'}],
+      ['o','main'],
+      ['b', bleg(122,100,130,17), 'body'],
+      ['b', [[131,153],[134,146],[140,140],[143,141,1],[139,146],[138,153]], 'nail', {sw:1.8}],
+      ['b', [[146,78],[166,84],[176,96],[172,104],[162,104],[152,110,1],[148,102],[140,104,1],[138,94]], 'acc'],
+      ['l', [[200,51],[214,50],[224,47]]],
+      ['c', 222,41,1.4,'line',{ns:1}],
+      ['ck', 190,49,4], ['eye', 196,42,5.5]
+    ]
+  },
+  spino: {
+    c: {body:'#3FA69E', belly:'#D4F0EA', acc:'#F27A50'}, sh:[120, 84],
+    parts: [
+      ['b', [[56,80],[60,52],[78,26],[104,14],[128,18],[146,36],[154,62],[156,80]], 'acc', {id:'sail'}],
+      ...[72,88,104,120,138].map(x => ['l', [[x,82],[x+(x-104)*0.12,0]], {clip:'sail', stroke:mix('#F27A50',INK,0.35), sw:2.2}]),
+      ['o','sail'],
+      ['b', bleg(92,104,100,17), 'far'],
+      ['b', [[6,96,1],[30,86],[60,76],[100,70],[140,70],[160,68],[172,60],[184,54],[196,58],[218,62],[236,66],[238,72],[226,76],[204,78],[186,80],[172,90],[158,108],[130,116],[100,114],[76,104],[46,100],[24,100]], 'body', {id:'main'}],
+      ['b', [[180,76],[236,72],[230,90],[170,104],[140,124],[80,114],[30,104],[80,102],[150,98]], 'belly', {clip:'main'}],
+      ['o','main'],
+      ['b', bleg(106,104,114,19), 'body'],
+      ['b', [[152,92],[168,98],[174,106],[168,108],[158,102]], 'body'],
+      ['l', [[196,71],[216,72],[233,69]]],
+      ['ck', 182,70,3.5], ['eye', 187,62,4.5]
+    ]
+  },
+  para: {
+    c: {body:'#EE8B8E', belly:'#FCE0DE', acc:'#F4C443'}, sh:[118, 82],
+    parts: [
+      ['b', [[176,38],[160,24],[140,12],[126,10],[122,16],[136,21],[156,34],[172,48]], 'acc'],
+      ['b', bleg(92,104,100,18), 'far'],
+      ['b', [[6,100,1],[30,90],[60,78],[96,68],[126,62],[146,60],[160,50],[170,36],[184,30],[200,34],[212,42],[224,48],[228,56],[220,62],[206,62],[192,62],[180,70],[172,86],[160,104],[132,114],[104,112],[80,104],[50,102],[24,104]], 'body', {id:'main'}],
+      ['b', [[180,64],[226,58],[210,72],[176,92],[150,118],[90,118],[30,110],[90,106],[150,96],[170,76]], 'belly', {clip:'main'}],
+      ['e', 90,74,4,8,'dark',{clip:'main'},-15], ['e', 110,67,4,8,'dark',{clip:'main'},-8], ['e', 130,64,4,8,'dark',{clip:'main'},0],
+      ['o','main'],
+      ['b', bleg(106,102,114,20), 'body'],
+      ['b', [[164,90],[176,98],[180,108],[176,110],[168,102],[160,98]], 'body'],
+      ['l', [[208,55],[219,56],[226,54]]],
+      ['c', 222,49,1.4,'line',{ns:1}],
+      ['ck', 186,52,4], ['eye', 190,42,5]
+    ]
+  },
+  pachy: {
+    c: {body:'#A5C957', belly:'#EEF6D2', acc:'#F2E3C4', acc2:'#C9A96E'}, sh:[118, 82],
+    parts: [
+      ['b', bleg(92,104,100,18), 'far'],
+      ['b', [[6,94,1],[34,84],[70,74],[104,70],[132,72],[150,66],[164,52],[172,44],[196,44],[210,52],[218,62],[216,72],[206,78],[192,80],[178,82],[168,92],[156,108],[130,116],[104,114],[80,104],[46,100],[22,98]], 'body', {id:'main'}],
+      ['b', [[176,78],[216,70],[200,90],[170,100],[150,118],[80,118],[30,104],[90,104],[150,96]], 'belly', {clip:'main'}],
+      ['c', 90,80,4,'dark',{clip:'main'}], ['c', 112,76,3.5,'dark',{clip:'main'}], ['c', 134,78,4,'dark',{clip:'main'}],
+      ['o','main'],
+      ['b', [[166,54],[168,36],[184,22],[204,24],[216,38],[214,54],[196,50],[180,52]], 'acc'],
+      ['c', 165,53,3.2,'acc2',{sw:1.6}], ['c', 171,59,2.8,'acc2',{sw:1.6}], ['c', 214,56,2.8,'acc2',{sw:1.6}], ['c', 219,64,2.4,'acc2',{sw:1.6}], ['c', 206,79,2.4,'acc2',{sw:1.6}],
+      ['b', bleg(106,102,116,20), 'body'],
+      ['b', [[158,90],[172,96],[176,104],[172,106],[164,100],[156,98]], 'body'],
+      ['l', [[202,71],[211,72],[216,69]]],
+      ['ck', 192,69,4], ['eye', 196,60,5]
+    ]
+  },
+  iguano: {
+    c: {body:'#8DB04E', belly:'#E7F0CF', acc2:'#FFF1D2'}, sh:[118, 84],
+    parts: [
+      ['b', bleg(90,104,98,20), 'far'],
+      ['b', [[6,98,1],[34,86],[70,72],[104,64],[134,62],[152,56],[166,42],[182,34],[200,34],[216,40],[228,50],[226,60],[212,64],[196,64],[182,68],[174,82],[164,102],[134,116],[106,114],[80,104],[46,104],[22,102]], 'body', {id:'main'}],
+      ['b', [[180,64],[226,58],[210,74],[176,96],[160,118],[80,120],[30,110],[90,106],[150,96]], 'belly', {clip:'main'}],
+      ['e', 82,72,4,8,'dark',{clip:'main'},-20], ['e', 102,66,4,8,'dark',{clip:'main'},-10], ['e', 122,63,4,8,'dark',{clip:'main'},0], ['e', 142,61,4,7,'dark',{clip:'main'},10],
+      ['o','main'],
+      ['b', bleg(104,102,114,22), 'body'],
+      ['b', [[182,106],[192,102],[199,86,1]], 'acc2'],
+      ['b', [[164,86],[180,96],[190,108],[186,114],[178,110],[168,102],[160,98]], 'body'],
+      ['l', [[208,57],[219,58],[225,55]]],
+      ['c', 224,48,1.4,'line',{ns:1}],
+      ['ck', 194,54,4], ['eye', 198,44,5]
+    ]
+  },
+  dilo: {
+    c: {body:'#C3D24A', belly:'#F4F7D4', acc:'#E2553F'}, sh:[118, 80],
+    parts: [
+      ['b', [[174,42],[176,24],[188,17],[199,24],[204,42]], mix('#E2553F',INK,0.15)],
+      ['b', [[184,42],[188,20],[202,13],[213,22],[216,42]], 'acc'],
+      ['b', bleg(92,104,100,18), 'far'],
+      ['b', [[6,90,1],[36,80],[70,72],[104,68],[134,66],[152,60],[166,46],[178,38],[196,36],[214,40],[228,46],[228,54],[214,58],[196,58],[182,62],[174,78],[162,100],[134,112],[106,112],[80,102],[46,96],[22,94]], 'body', {id:'main'}],
+      ['b', [[180,58],[226,52],[210,68],[176,92],[150,116],[80,116],[30,100],[90,100],[150,92]], 'belly', {clip:'main'}],
+      ['e', 70,76,3,9,'dark',{clip:'main'},-20], ['e', 90,72,3,9,'dark',{clip:'main'},-12], ['e', 110,69,3,9,'dark',{clip:'main'},-5], ['e', 130,67,3,9,'dark',{clip:'main'},0],
+      ['o','main'],
+      ['b', bleg(106,102,116,20), 'body'],
+      ['b', [[158,84],[172,92],[178,102],[174,104],[166,98],[156,94]], 'body'],
+      ['l', [[200,52],[214,52],[225,49]]],
+      ['c', 224,45,1.4,'line',{ns:1}],
+      ['ck', 190,51,4], ['eye', 194,44,5]
+    ]
+  },
+  carno: {
+    c: {body:'#D9564F', belly:'#FBDCD5', acc:'#FFF1D6'}, sh:[118, 80],
+    parts: [
+      ['b', [[176,44],[186,41],[168,24,1]], mix('#FFF1D6',INK,0.15)],
+      ['b', [[188,42],[200,40],[194,18,1]], 'acc'],
+      ['b', bleg(92,104,100,19), 'far'],
+      ['b', [[6,92,1],[36,82],[70,72],[106,66],[136,64],[156,58],[168,48],[180,40],[200,38],[218,44],[226,54],[224,64],[212,70],[194,72],[180,76],[172,90],[162,104],[134,114],[106,114],[80,104],[46,98],[22,96]], 'body', {id:'main'}],
+      ['b', [[182,70],[224,62],[206,80],[176,96],[150,118],[80,118],[30,104],[90,104],[150,96]], 'belly', {clip:'main'}],
+      ...[80,96,112,128,144].map((x,i) => ['c', x, 76 - i*2.2, 2.6, 'dark', {clip:'main'}]),
+      ...[88,104,120,136].map((x,i) => ['c', x, 86 - i*2, 2.2, 'dark', {clip:'main'}]),
+      ['o','main'],
+      ['b', bleg(106,102,116,21), 'body'],
+      ['b', [[162,90],[170,94],[172,99],[166,98]], 'body', {sw:2.4}],
+      ['l', [[202,62],[213,64],[222,60]]],
+      ['c', 220,50,1.4,'line',{ns:1}],
+      ['ck', 194,60,4], ['eye', 200,50,5]
+    ]
+  },
+  theri: {
+    c: {body:'#A68CCB', belly:'#EDE4F7', acc:'#FFF1D6'}, sh:[108, 70],
+    parts: [
+      ['b', [[26,114],[8,104,1],[18,116],[4,124,1],[22,130]], 'dark'],
+      ['b', bleg(96,120,100,17), 'far'],
+      ['b', [[20,122,1],[40,110],[60,96],[80,78],[104,66],[126,58],[140,44],[150,30],[162,20],[178,18],[192,24],[196,32],[188,36],[174,36],[166,46],[160,64],[152,84],[148,106],[138,128],[112,140],[86,138],[64,130],[42,124]], 'body', {id:'main'}],
+      ['b', [[160,40],[176,38],[166,80],[152,120],[120,146],[80,144],[100,120],[130,100],[150,60]], 'belly', {clip:'main'}],
+      ['o','main'],
+      ['b', bleg(112,120,118,19), 'body'],
+      ['b', [[160,98],[166,98],[178,122],[174,134,1],[166,116]], 'acc'],
+      ['b', [[164,96],[170,94],[188,116],[186,128,1],[178,112]], 'acc'],
+      ['b', [[170,94],[176,92],[196,108],[198,120,1],[186,106]], 'acc'],
+      ['b', [[140,70],[158,78],[172,92],[170,100],[158,100],[146,88]], 'body'],
+      ['l', [[184,33],[192,32]]],
+      ['ck', 176,31,3], ['eye', 178,25,4]
+    ]
+  },
+  galli: {
+    c: {body:'#E3B56A', belly:'#FBEBD0'}, sh:[118, 60],
+    parts: [
+      ['b', bleg(100,90,110,15), 'far'],
+      ['b', [[6,78,1],[36,74],[70,70],[100,62],[124,58],[140,52],[150,40],[160,24],[172,16],[186,16],[198,20],[212,24],[214,28],[200,30],[188,32],[176,36],[168,50],[162,70],[150,88],[126,98],[100,96],[76,86],[46,84],[20,82]], 'body', {id:'main'}],
+      ['b', [[176,30],[214,26],[200,40],[172,60],[150,96],[80,100],[30,88],[90,86],[140,76],[164,44]], 'belly', {clip:'main'}],
+      ['e', 84,70,3.5,7,'dark',{clip:'main'},-15], ['e', 102,64,3.5,7,'dark',{clip:'main'},-8], ['e', 120,60,3.5,7,'dark',{clip:'main'},0],
+      ['o','main'],
+      ['b', bleg(114,88,126,16), 'body'],
+      ['b', [[150,74],[162,80],[166,88],[160,88],[150,82]], 'body'],
+      ['l', [[192,27],[206,27]]],
+      ['ck', 180,28,3], ['eye', 182,21,4.5]
+    ]
+  },
+  compy: {
+    c: {body:'#8CC95B', belly:'#EAF6D6', acc:'#5BB8E8'}, sh:[102, 58],
+    parts: [
+      ['b', bleg(96,112,104,13), 'far'],
+      ['b', [[20,100,1],[50,94],[80,88],[104,84],[124,80],[136,70],[144,58],[156,52],[172,54],[184,60],[186,66],[176,70],[162,70],[152,74],[148,90],[140,108],[118,118],[98,116],[82,106],[54,104],[34,104]], 'body', {id:'main'}],
+      ['b', [[152,70],[186,64],[170,78],[150,100],[130,124],[80,120],[40,108],[90,108],[136,98]], 'belly', {clip:'main'}],
+      ['e', 76,88,2.8,7,'dark',{clip:'main'},-15], ['e', 94,85,2.8,7,'dark',{clip:'main'},-8], ['e', 112,82,2.8,7,'dark',{clip:'main'},0],
+      ['o','main'],
+      ['b', bleg(108,110,118,14), 'body'],
+      ['b', [[140,90],[150,96],[152,102],[146,100],[138,96]], 'body'],
+      ['l', [[166,66],[176,66],[184,63]]],
+      ['ck', 160,64,3], ['eye', 164,59,4],
+      ['e', 212,40,11,5,'#DDF2FC',{sw:1.6, op:0.9},-25], ['e', 214,56,11,5,'#DDF2FC',{sw:1.6, op:0.9},25],
+      ['b', [[200,48],[226,46],[228,50],[202,52]], 'acc', {sw:1.8}],
+      ['c', 229,48,3.4,'acc',{sw:1.8}]
+    ]
+  },
+  maia: {
+    c: {body:'#C99B6A', belly:'#F6E6D2', acc:'#9C7447'}, sh:[100, 86],
+    parts: [
+      ['b', cleg(70,110,20), 'far'], ['b', cleg(128,112,16), 'far'],
+      ['b', [[6,112,1],[28,102],[52,80],[84,66],[116,64],[140,70],[156,82],[168,94],[174,98],[182,96],[190,102],[200,110],[206,122],[196,130],[182,130],[170,126],[154,122],[140,126],[110,132],[76,132],[50,124],[28,118]], 'body', {id:'main'}],
+      ['b', [[20,124],[80,124],[150,118],[172,122],[200,122],[206,136],[120,150],[40,136]], 'belly', {clip:'main'}],
+      ['c', 84,86,5,'dark',{clip:'main'}], ['c', 104,80,4,'dark',{clip:'main'}], ['c', 124,86,4.5,'dark',{clip:'main'}], ['c', 68,96,3.5,'dark',{clip:'main'}],
+      ['o','main'],
+      ['b', cleg(58,112,24), 'body'], ...nails(58,24),
+      ['b', cleg(118,114,18), 'body'], ...nails(118,18),
+      ['l', [[193,123],[202,124]]],
+      ['ck', 184,118,3.5], ['eye', 186,110,4.5],
+      ['e', 192,146,7,9,'#FFF6E6',{sw:2}], ['e', 206,144,7,9,'#FFF6E6',{sw:2}], ['e', 218,147,6.5,8.5,'#FFF6E6',{sw:2}],
+      ['c', 190,142,1.5,'#E7C9A2',{ns:1}], ['c', 208,140,1.5,'#E7C9A2',{ns:1}],
+      ['b', [[178,148],[230,148],[224,160],[184,160]], 'acc']
+    ]
+  },
+  ptera: {
+    c: {body:'#F2CF79', belly:'#FFF3D0', acc:'#E99A5E', acc2:'#D9534F'}, habitat:'sky',
+    parts: [
+      ['b', [[112,74],[80,60],[44,52],[8,50,1],[30,64],[52,80],[80,96],[112,100]], 'acc'],
+      ['b', [[128,74],[160,60],[196,52],[232,50,1],[210,64],[188,80],[160,96],[128,100]], 'acc'],
+      ['l', [[112,76],[80,62],[44,54],[12,51]], {stroke: mix('#E99A5E',INK,0.35), sw:2}],
+      ['l', [[128,76],[160,62],[196,54],[228,51]], {stroke: mix('#E99A5E',INK,0.35), sw:2}],
+      ['b', [[114,104],[118,104],[116,116,1]], 'dark', {sw:2.2}], ['b', [[122,104],[126,104],[124,116,1]], 'dark', {sw:2.2}],
+      ['b', [[108,72],[120,66],[132,72],[136,90],[128,108],[112,108],[104,90]], 'body', {id:'main'}],
+      ['e', 120,98,12,12,'belly',{clip:'main'}],
+      ['o','main'],
+      ['b', [[118,52],[100,38],[80,30,1],[104,48],[114,58]], 'acc2'],
+      ['b', [[110,58],[118,46],[130,44],[140,50],[160,54],[180,58,1],[160,62],[138,64],[122,66],[112,64]], 'body'],
+      ['l', [[140,59],[172,59]]],
+      ['ck', 125,59,3], ['eye', 128,52,4.5]
+    ]
+  },
+  mosa: {
+    c: {body:'#3F72B5', belly:'#D6E6F7'}, habitat:'sea',
+    parts: [
+      ['b', [[90,96],[102,94],[94,116],[82,118,1]], 'far'], ['b', [[152,94],[164,92],[160,114],[148,116,1]], 'far'],
+      ['b', [[42,84],[28,66],[16,58,1],[30,80],[34,90],[20,114,1],[42,100]], 'dark'],
+      ['b', [[30,90,1],[60,82],[100,72],[140,68],[170,70],[190,64],[214,64],[234,72],[238,80],[226,84],[208,86],[190,90],[170,100],[140,106],[100,104],[64,98]], 'body', {id:'main'}],
+      ['b', [[40,96],[100,92],[170,86],[238,80],[230,100],[100,114]], 'belly', {clip:'main'}],
+      ['o','main'],
+      ['b', [[96,100],[110,98],[106,124],[96,130,1],[92,118]], 'dark'],
+      ['b', [[156,98],[170,96],[168,120],[160,128,1],[154,116]], 'dark'],
+      ['l', [[198,80],[220,80],[234,78]]],
+      ['ck', 198,77,3.5], ['eye', 204,70,4.5],
+      ['c', 232,54,3.2,'none',{stroke:'#8FC8EC', sw:2}], ['c', 224,42,2.2,'none',{stroke:'#8FC8EC', sw:2}], ['c', 236,34,2.6,'none',{stroke:'#8FC8EC', sw:2}]
+    ]
+  },
+  plesio: {
+    c: {body:'#4DBAA9', belly:'#D8F3EE'}, habitat:'sea',
+    parts: [
+      ['b', [[76,104],[88,102],[72,128],[62,128,1]], 'far'], ['b', [[124,104],[136,102],[132,126],[122,130,1]], 'far'],
+      ['b', [[16,100,1],[36,92],[60,82],[92,76],[120,78],[140,72],[160,58],[176,42],[190,32],[206,30],[220,34],[228,40],[222,46],[208,46],[196,48],[184,58],[166,82],[150,100],[120,112],[80,114],[50,108],[30,104]], 'body', {id:'main'}],
+      ['b', [[40,106],[100,100],[150,90],[180,56],[210,44],[196,60],[170,96],[120,124],[40,120]], 'belly', {clip:'main'}],
+      ['c', 80,88,4,'dark',{clip:'main'}], ['c', 100,84,3.2,'dark',{clip:'main'}], ['c', 118,86,3.6,'dark',{clip:'main'}],
+      ['o','main'],
+      ['b', [[82,108],[96,106],[92,134],[82,140,1],[76,128]], 'dark'],
+      ['b', [[130,106],[144,104],[146,130],[138,138,1],[130,126]], 'dark'],
+      ['l', [[212,43],[224,42]]],
+      ['ck', 205,42,3], ['eye', 208,36,4],
+      ['c', 234,26,3,'none',{stroke:'#8FC8EC', sw:2}], ['c', 226,16,2.2,'none',{stroke:'#8FC8EC', sw:2}]
+    ]
+  }
+};
+
+function renderArt(id, opt = {}){
+  const a = ART[id]; const c = a.c; const uid = 'a' + (++artSeq);
+  const line = mix(c.body, INK, 0.62);
+  const pal = {
+    body: c.body, belly: c.belly, acc: c.acc || c.body, acc2: c.acc2 || '#FFF1D2',
+    line, far: mix(c.body, INK, 0.2), dark: mix(c.body, INK, 0.16),
+    nail: '#FFF6E3', white: '#FFFFFF', none: 'none'
+  };
+  const col = k => (k && k[0] === '#') ? k : (pal[k] || k);
+  const paths = {};
+  let defs = '', out = '';
+  const habitat = a.habitat || 'land';
+  if (habitat === 'land' && !opt.noShadow){
+    const [cx, rx] = a.sh || [120, 80];
+    out += `<ellipse cx="${cx}" cy="${G + 1.5}" rx="${rx}" ry="5" fill="#000" opacity=".13"/>`;
+  }
+  const attrs = (o, fill, isClip) => {
+    let s = ` fill="${col(fill)}"`;
+    const noStroke = o.ns || (isClip && !o.stroke);
+    if (!noStroke) s += ` stroke="${o.stroke || line}" stroke-width="${o.sw || 3.2}" stroke-linejoin="round" stroke-linecap="round"`;
+    if (o.op) s += ` opacity="${o.op}"`;
+    if (o.clip) s += ` clip-path="url(#${uid}-${o.clip})"`;
+    return s;
+  };
+  for (const p of a.parts){
+    const t = p[0];
+    if (t === 'b' || t === 'p'){
+      const o = p[3] || {};
+      const d = t === 'b' ? smoothPath(p[1]) : polyPath(p[1]);
+      if (o.id){ paths[o.id] = d; defs += `<clipPath id="${uid}-${o.id}"><path d="${d}"/></clipPath>`; }
+      out += `<path d="${d}"${attrs(o, p[2], !!o.clip)}/>`;
+    } else if (t === 'c'){
+      const o = p[5] || {};
+      out += `<circle cx="${p[1]}" cy="${p[2]}" r="${p[3]}"${attrs(o, p[4], !!o.clip)}/>`;
+    } else if (t === 'e'){
+      const o = p[6] || {}; const rot = p[7] || 0;
+      out += `<ellipse cx="${p[1]}" cy="${p[2]}" rx="${p[3]}" ry="${p[4]}" transform="rotate(${rot} ${p[1]} ${p[2]})"${attrs(o, p[5], !!o.clip)}/>`;
+    } else if (t === 'l'){
+      const o = p[2] || {};
+      out += `<path d="${smoothPath(p[1], false)}" fill="none" stroke="${o.stroke || line}" stroke-width="${o.sw || 2.6}" stroke-linecap="round"${o.clip ? ` clip-path="url(#${uid}-${o.clip})"` : ''}/>`;
+    } else if (t === 'o'){
+      out += `<path d="${paths[p[1]]}" fill="none" stroke="${line}" stroke-width="3.2" stroke-linejoin="round"/>`;
+    } else if (t === 'ck'){
+      out += `<circle cx="${p[1]}" cy="${p[2]}" r="${p[3]}" fill="#FF8FA3" opacity=".5"/>`;
+    } else if (t === 'eye'){
+      const [x, y, r] = [p[1], p[2], p[3]];
+      out += `<g class="dz-eye"><circle cx="${x}" cy="${y}" r="${r}" fill="#fff" stroke="${line}" stroke-width="2.2"/><circle cx="${fx(x + r*0.22)}" cy="${fx(y + r*0.06)}" r="${fx(r*0.58)}" fill="#1b1d1a"/><circle cx="${fx(x + r*0.42)}" cy="${fx(y - r*0.2)}" r="${fx(r*0.22)}" fill="#fff"/></g>`;
+    }
+  }
+  const label = opt.label ? ` role="img" aria-label="${opt.label}"` : ' aria-hidden="true"';
+  return `<svg class="dz" viewBox="0 0 240 170"${label}><defs>${defs}</defs><g class="dz-body">${out}</g></svg>`;
+}
+
+if (typeof module !== 'undefined') module.exports = { ART, renderArt, mix };
+
+/* ---------- Dinosaur facts (English + Russian) ----------
+   len: metres (wingspan for Pteranodon), kg: approximate weight,
+   mya: million years ago, era: jurassic | cretaceous
+   diet: plants | meat | fish | both,  sound: roar | rumble | chirp | honk | screech | splash | bonk */
+const DINOS = [
+  { id:'trex', diet:'meat', len:12, kg:8000, era:'cretaceous', mya:'68–66', sound:'roar', pitch:0.8,
+    en:{ name:'Tyrannosaurus rex', short:'T. rex', say:'T. rex', meaning:'Tyrant lizard king', where:'North America',
+      hi:"I'm T. rex! I have big teeth and tiny arms.",
+      facts:['T. rex had teeth as big as bananas.','Its arms were tiny, but very strong.','It had one of the strongest bites of any land animal ever.'] },
+    ru:{ name:'Тираннозавр', meaning:'Король ящеров-тиранов', where:'Северная Америка',
+      hi:'Я тираннозавр! У меня большие зубы и крошечные лапки.',
+      facts:['Зубы у тираннозавра были размером с банан.','Передние лапки у него были крошечные, но очень сильные.','Его укус был одним из самых сильных среди всех животных на суше.'] } },
+  { id:'trike', diet:'plants', len:9, kg:9000, era:'cretaceous', mya:'68–66', sound:'rumble', pitch:1.1,
+    en:{ name:'Triceratops', meaning:'Three-horned face', where:'North America',
+      hi:"I'm Triceratops! I have three horns and a big frill.",
+      facts:['It had one of the biggest heads of any land animal.','It had a beak like a parrot for biting plants.','Triceratops lived at the same time as T. rex.'] },
+    ru:{ name:'Трицератопс', meaning:'Трёхрогая морда', where:'Северная Америка',
+      hi:'Я трицератопс! У меня три рога и большой воротник.',
+      facts:['У него была одна из самых больших голов среди животных на суше.','У него был клюв, как у попугая, чтобы кусать растения.','Трицератопс жил в одно время с тираннозавром.'] } },
+  { id:'stego', diet:'plants', len:9, kg:5000, era:'jurassic', mya:'155–150', sound:'rumble', pitch:1.2,
+    en:{ name:'Stegosaurus', meaning:'Roof lizard', where:'North America and Europe',
+      hi:"I'm Stegosaurus! Look at the plates on my back.",
+      facts:['It had big plates on its back and sharp spikes on its tail.','Its brain was tiny, about as big as a lime.','Stegosaurus lived long before T. rex. They never met!'] },
+    ru:{ name:'Стегозавр', meaning:'Крытый ящер', where:'Северная Америка и Европа',
+      hi:'Я стегозавр! Посмотри на пластины у меня на спине.',
+      facts:['На спине у него были большие пластины, а на хвосте острые шипы.','Мозг у него был крошечный, размером с лайм.','Стегозавр жил задолго до тираннозавра. Они никогда не встречались!'] } },
+  { id:'brachio', diet:'plants', len:22, kg:40000, era:'jurassic', mya:'154–153', sound:'rumble', pitch:0.6,
+    en:{ name:'Brachiosaurus', meaning:'Arm lizard', where:'North America',
+      hi:"I'm Brachiosaurus! My long neck reaches the treetops.",
+      facts:['It was as tall as a four-story building.','Its front legs were longer than its back legs, like a giraffe.','It ate lots and lots of leaves every single day.'] },
+    ru:{ name:'Брахиозавр', meaning:'Плечевой ящер', where:'Северная Америка',
+      hi:'Я брахиозавр! Моя длинная шея достаёт до верхушек деревьев.',
+      facts:['Он был высотой с четырёхэтажный дом.','Передние ноги у него были длиннее задних, как у жирафа.','Каждый день он съедал очень-очень много листьев.'] } },
+  { id:'diplo', diet:'plants', len:26, kg:15000, era:'jurassic', mya:'154–152', sound:'rumble', pitch:0.7,
+    en:{ name:'Diplodocus', meaning:'Double beam', where:'North America',
+      hi:"I'm Diplodocus! I have a super long neck and tail.",
+      facts:['It was one of the longest dinosaurs, longer than two buses.','It may have cracked its long tail like a whip.','Its teeth were like little pegs for pulling off leaves.'] },
+    ru:{ name:'Диплодок', meaning:'Двойная балка', where:'Северная Америка',
+      hi:'Я диплодок! У меня очень длинные шея и хвост.',
+      facts:['Это один из самых длинных динозавров: он длиннее двух автобусов.','Возможно, он щёлкал своим длинным хвостом, как кнутом.','Его зубы были похожи на колышки, ими он срывал листья.'] } },
+  { id:'ankylo', diet:'plants', len:7, kg:6000, era:'cretaceous', mya:'68–66', sound:'bonk', pitch:0.9,
+    en:{ name:'Ankylosaurus', meaning:'Fused lizard', where:'North America',
+      hi:"I'm Ankylosaurus! My body is covered in armor.",
+      facts:['Its back was covered with hard bony armor, like a tank.','It had a heavy club on its tail, like a hammer.','It walked slowly and ate low plants.'] },
+    ru:{ name:'Анкилозавр', meaning:'Сросшийся ящер', where:'Северная Америка',
+      hi:'Я анкилозавр! Моё тело покрыто бронёй.',
+      facts:['Его спина была покрыта твёрдой костяной бронёй, как у танка.','На хвосте у него была тяжёлая булава, как молот.','Он ходил медленно и ел низкие растения.'] } },
+  { id:'raptor', diet:'meat', len:2, kg:15, era:'cretaceous', mya:'75–71', sound:'chirp', pitch:1.0,
+    en:{ name:'Velociraptor', meaning:'Swift thief', where:'Asia (Mongolia and China)',
+      hi:"I'm Velociraptor! I'm small, fast and covered in feathers.",
+      facts:['Velociraptor had feathers, like a bird.','It was about as big as a turkey.','It had a big curved claw on each foot.'] },
+    ru:{ name:'Велоцираптор', short:'Велоци­раптор', meaning:'Быстрый похититель', where:'Азия (Монголия и Китай)',
+      hi:'Я велоцираптор! Я маленький, быстрый и покрыт перьями.',
+      facts:['У велоцираптора были перья, как у птицы.','Он был размером с индюка.','На каждой ноге у него был большой изогнутый коготь.'] } },
+  { id:'spino', diet:'fish', len:14, kg:7000, era:'cretaceous', mya:'99–93', sound:'roar', pitch:0.9,
+    en:{ name:'Spinosaurus', meaning:'Spine lizard', where:'Africa (Egypt and Morocco)',
+      hi:"I'm Spinosaurus! I have a big sail on my back.",
+      facts:['It had a giant sail on its back.','It loved to catch fish, like a crocodile.','It was one of the biggest meat-eating dinosaurs, even longer than T. rex.'] },
+    ru:{ name:'Спинозавр', meaning:'Шипастый ящер', where:'Африка (Египет и Марокко)',
+      hi:'Я спинозавр! У меня на спине большой парус.',
+      facts:['На спине у него был огромный парус.','Он любил ловить рыбу, как крокодил.','Это один из самых больших хищных динозавров, он был даже длиннее тираннозавра.'] } },
+  { id:'para', diet:'plants', len:9.5, kg:2500, era:'cretaceous', mya:'76–73', sound:'honk', pitch:1.0,
+    en:{ name:'Parasaurolophus', meaning:'Near crested lizard', where:'North America',
+      hi:"I'm Parasaurolophus! I can toot like a trumpet.",
+      facts:['It had a long hollow crest on its head.','It could blow air through its crest to make a loud trumpet sound.','It had a flat beak like a duck.'] },
+    ru:{ name:'Паразауролоф', short:'Паразауро­лоф', meaning:'Почти гребнистый ящер', where:'Северная Америка',
+      hi:'Я паразауролоф! Я умею трубить, как труба.',
+      facts:['На голове у него был длинный полый гребень.','Он продувал воздух через гребень и громко трубил.','У него был плоский клюв, как у утки.'] } },
+  { id:'pachy', diet:'plants', len:4.5, kg:450, era:'cretaceous', mya:'70–66', sound:'bonk', pitch:1.2,
+    en:{ name:'Pachycephalosaurus', short:'Pachycephalo­saurus', meaning:'Thick-headed lizard', where:'North America',
+      hi:"I'm Pachycephalosaurus! I have a hard round head.",
+      facts:['The top of its head was a thick dome of bone.','Its head had little bumps and spikes all around.','Scientists think they may have bumped heads, like mountain goats.'] },
+    ru:{ name:'Пахицефалозавр', short:'Пахицефало­завр', meaning:'Толстоголовый ящер', where:'Северная Америка',
+      hi:'Я пахицефалозавр! У меня твёрдая круглая голова.',
+      facts:['Макушка у него была толстым костяным куполом.','Вокруг головы у него были шишки и маленькие шипы.','Учёные думают, что они могли бодаться, как горные козлы.'] } },
+  { id:'iguano', diet:'plants', len:10, kg:3500, era:'cretaceous', mya:'126–122', sound:'rumble', pitch:1.1,
+    en:{ name:'Iguanodon', meaning:'Iguana tooth', where:'Europe',
+      hi:"I'm Iguanodon! I have a spike on my thumb.",
+      facts:['It had a sharp spike on each thumb.','It was one of the first dinosaurs ever found, about 200 years ago.','It could walk on two legs or on all four.'] },
+    ru:{ name:'Игуанодон', meaning:'Зуб игуаны', where:'Европа',
+      hi:'Я игуанодон! У меня шип на большом пальце.',
+      facts:['На каждом большом пальце у него был острый шип.','Это один из первых найденных динозавров, его открыли около 200 лет назад.','Он мог ходить на двух ногах или на четырёх.'] } },
+  { id:'dilo', diet:'meat', len:7, kg:400, era:'jurassic', mya:'193', sound:'roar', pitch:1.3,
+    en:{ name:'Dilophosaurus', meaning:'Two-crested lizard', where:'North America',
+      hi:"I'm Dilophosaurus! I have two crests on my head.",
+      facts:['It had two thin crests on top of its head.','It was one of the first big meat-eating dinosaurs.','In movies it spits, but the real Dilophosaurus did not!'] },
+    ru:{ name:'Дилофозавр', meaning:'Двухгребнистый ящер', where:'Северная Америка',
+      hi:'Я дилофозавр! У меня на голове два гребня.',
+      facts:['На голове у него было два тонких гребня.','Это один из первых крупных хищных динозавров.','В кино он плюётся, а настоящий дилофозавр так не умел!'] } },
+  { id:'carno', diet:'meat', len:8, kg:1500, era:'cretaceous', mya:'72–69', sound:'roar', pitch:1.15,
+    en:{ name:'Carnotaurus', meaning:'Meat-eating bull', where:'South America (Argentina)',
+      hi:"I'm Carnotaurus! I have horns like a bull.",
+      facts:['It had two horns above its eyes, like a bull.',"Its arms were even tinier than T. rex's arms.",'It was a very fast runner.'] },
+    ru:{ name:'Карнотавр', meaning:'Плотоядный бык', where:'Южная Америка (Аргентина)',
+      hi:'Я карнотавр! У меня рога, как у быка.',
+      facts:['Над глазами у него было два рога, как у быка.','Его передние лапки были даже меньше, чем у тираннозавра.','Он очень быстро бегал.'] } },
+  { id:'theri', diet:'plants', len:9, kg:5000, era:'cretaceous', mya:'70', sound:'rumble', pitch:1.25,
+    en:{ name:'Therizinosaurus', short:'Therizino­saurus', meaning:'Scythe lizard', where:'Asia (Mongolia)',
+      hi:"I'm Therizinosaurus! Look at my long claws.",
+      facts:['Its claws were longer than your whole arm.','Even with big claws, it mostly ate plants.','It had a round belly and was probably covered in feathers.'] },
+    ru:{ name:'Теризинозавр', short:'Теризино­завр', meaning:'Ящер-коса', where:'Азия (Монголия)',
+      hi:'Я теризинозавр! Посмотри на мои длинные когти.',
+      facts:['Его когти были длиннее твоей руки.','Несмотря на огромные когти, он ел в основном растения.','У него был круглый живот, и, скорее всего, он был покрыт перьями.'] } },
+  { id:'galli', diet:'both', len:6, kg:450, era:'cretaceous', mya:'70', sound:'chirp', pitch:0.8,
+    en:{ name:'Gallimimus', meaning:'Chicken mimic', where:'Asia (Mongolia)',
+      hi:"I'm Gallimimus! I run fast, like an ostrich.",
+      facts:['It was one of the fastest dinosaurs.','It had no teeth, just a beak like a bird.','It ate plants, bugs and small animals.'] },
+    ru:{ name:'Галлимим', meaning:'Подобный курице', where:'Азия (Монголия)',
+      hi:'Я галлимим! Я бегаю быстро, как страус.',
+      facts:['Это один из самых быстрых динозавров.','У него не было зубов, только клюв, как у птицы.','Он ел растения, жуков и мелких животных.'] } },
+  { id:'compy', diet:'meat', len:1, kg:3, era:'jurassic', mya:'150', sound:'chirp', pitch:1.5,
+    en:{ name:'Compsognathus', meaning:'Pretty jaw', where:'Europe (Germany and France)',
+      hi:"I'm Compsognathus! I'm as small as a chicken.",
+      facts:['It was one of the smallest dinosaurs, about as big as a chicken.','It ran fast to catch lizards and bugs.','Scientists found one with a lizard in its tummy!'] },
+    ru:{ name:'Компсогнат', meaning:'Изящная челюсть', where:'Европа (Германия и Франция)',
+      hi:'Я компсогнат! Я маленький, как курица.',
+      facts:['Это один из самых маленьких динозавров, размером с курицу.','Он быстро бегал и ловил ящериц и жуков.','Учёные нашли компсогната с ящерицей в животе!'] } },
+  { id:'maia', diet:'plants', len:9, kg:3000, era:'cretaceous', mya:'77', sound:'honk', pitch:1.3,
+    en:{ name:'Maiasaura', meaning:'Good mother lizard', where:'North America',
+      hi:"I'm Maiasaura! I take care of my babies.",
+      facts:['Maiasaura moms built nests and took care of their babies.','Scientists found whole nests with eggs and babies.','They lived together in big herds.'] },
+    ru:{ name:'Майазавра', meaning:'Ящер — хорошая мать', where:'Северная Америка',
+      hi:'Я майазавра! Я забочусь о своих малышах.',
+      facts:['Мамы майазавры строили гнёзда и заботились о малышах.','Учёные нашли целые гнёзда с яйцами и детёнышами.','Они жили вместе большими стадами.'] } },
+  { id:'ptera', diet:'fish', len:6, kg:25, era:'cretaceous', mya:'86–84', sound:'screech', pitch:1.0, wings:true,
+    en:{ name:'Pteranodon', meaning:'Wing without teeth', where:'North America',
+      hi:"I'm Pteranodon! I fly over the sea.",
+      facts:['Pteranodon was not a dinosaur. It was a flying reptile.','Its wings were wider than a car is long.','It had no teeth and caught fish with its long beak.'] },
+    ru:{ name:'Птеранодон', meaning:'Беззубое крыло', where:'Северная Америка',
+      hi:'Я птеранодон! Я летаю над морем.',
+      facts:['Птеранодон не динозавр. Это летающий ящер.','Размах его крыльев был больше, чем длина машины.','У него не было зубов, и он ловил рыбу длинным клювом.'] } },
+  { id:'mosa', diet:'fish', len:13, kg:10000, era:'cretaceous', mya:'82–66', sound:'splash', pitch:0.8,
+    en:{ name:'Mosasaurus', meaning:'Lizard of the Meuse River', where:'Seas all over the world',
+      hi:"I'm Mosasaurus! I swim in the deep sea.",
+      facts:['Mosasaurus was not a dinosaur. It was a giant sea reptile.','It swam with flippers and a tail fin like a shark.','It came up to the top of the water to breathe air.'] },
+    ru:{ name:'Мозазавр', meaning:'Ящер с реки Маас', where:'Моря по всему миру',
+      hi:'Я мозазавр! Я плаваю в глубоком море.',
+      facts:['Мозазавр не динозавр. Это огромный морской ящер.','Он плавал с помощью ласт и хвостового плавника, как у акулы.','Он поднимался к поверхности воды, чтобы дышать.'] } },
+  { id:'plesio', diet:'fish', len:3.5, kg:400, era:'jurassic', mya:'199–190', sound:'splash', pitch:1.2,
+    en:{ name:'Plesiosaurus', meaning:'Near to lizards', where:'Europe (England)',
+      hi:"I'm Plesiosaurus! I paddle with four flippers.",
+      facts:['Plesiosaurus was not a dinosaur. It was a sea reptile.','It swam with four big flippers, like a sea turtle.','It was found by Mary Anning, a famous fossil hunter.'] },
+    ru:{ name:'Плезиозавр', meaning:'Близкий к ящерам', where:'Европа (Англия)',
+      hi:'Я плезиозавр! Я плаваю с помощью четырёх ласт.',
+      facts:['Плезиозавр не динозавр. Это морской ящер.','Он плавал четырьмя большими ластами, как морская черепаха.','Его нашла Мэри Эннинг, знаменитая охотница за окаменелостями.'] } }
+];
+
+(function () {
+'use strict';
+const $ = s => document.querySelector(s);
+const STORE = {
+  get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+  set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+};
+const reduced = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function plural(n, one, few, many) {
+  const a = n % 10, b = n % 100;
+  if (a === 1 && b !== 11) return one;
+  if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few;
+  return many;
+}
+
+const T = {
+  en: {
+    app: 'Dino Land', tabDinos: 'Dinosaurs', tabGames: 'Games', tapHint: 'Tap a dinosaur!',
+    filters: { all: 'All', plants: 'Plant eaters', meat: 'Meat eaters', seasky: 'Sea & sky' },
+    credits: 'Voices made with Kokoro (English, Apache 2.0) and the Piper RUSLAN voice (Russian, CC BY-NC-SA 4.0). Free, non-commercial site.',
+    foot: 'Sizes and dates are scientists’ best guesses from fossils. Pteranodon, Mosasaurus and Plesiosaurus lived at the same time as dinosaurs, but they were other kinds of reptiles.',
+    back: 'Back', tapMe: 'Tap me!', listen: 'Listen', roar: 'Roar!',
+    prev: 'Previous dinosaur', next: 'Next dinosaur', soundOn: 'Sound is on', soundOff: 'Sound is off',
+    eats: 'Eats', when: 'When', found: 'Found in', weight: 'Weight',
+    diet: { plants: 'Plants', meat: 'Meat', fish: 'Fish', both: 'Plants and bugs' },
+    era: { jurassic: 'Jurassic period', cretaceous: 'Cretaceous period' },
+    mya: v => `${v} million years ago`,
+    weightVal: kg => kg < 1000 ? `about ${kg} kg` : `about ${num(kg / 1000)} t`,
+    cmp: { cat: 'As heavy as a cat', dog: 'As heavy as a big dog', horse: 'As heavy as a horse', car: 'As heavy as a car',
+      eleph: n => n === 1 ? 'As heavy as an elephant' : `As heavy as ${n} elephants` },
+    sizeTitle: 'How long?', wingTitle: 'How wide are the wings?',
+    sizeText: (l, n) => `${num(l)} m long. ` + (n === 1 ? 'That’s about as long as you are tall!' : `That’s like ${n} little kids lying in a row!`),
+    wingText: (l, n) => `${num(l)} m from wing tip to wing tip. That’s like ${n} little kids in a row!`,
+    factsTitle: 'Fun facts', sayFact: 'Read this fact aloud', quote: s => `“${s}”`,
+    bubble: { roar: 'ROAR!', rumble: 'HRRUMM!', chirp: 'SKREE!', honk: 'TOOOT!', screech: 'SKRAAA!', splash: 'SPLASH!', bonk: 'BONK!' },
+    g: {
+      find: { title: 'Find the dinosaur', desc: 'Listen, then tap the right one.' },
+      eat: { title: 'What does it eat?', desc: 'Plants or meat? You choose!' },
+      big: { title: 'Who is bigger?', desc: 'Tap the bigger one.' }
+    },
+    whereIs: n => `Where is ${n}?`, whatEats: n => `What does ${n} eat?`, whoBigger: 'Who is bigger?',
+    yesThis: n => `Yes! That’s ${n}!`, wrongThis: n => `That’s ${n}. Try again!`,
+    yesEats: (n, d) => `Yes! ${n} eats ${d === 'plants' ? 'plants' : 'meat'}!`, tryAgain: 'Hmm, try again!',
+    yesBigger: n => `Yes! ${n} is bigger!`, wrongBigger: 'That one is smaller. Try again!',
+    plants: 'Plants', meat: 'Meat', games: 'Games',
+    win: 'You did it!', winSub: 'Five stars. Great job!', winSay: 'Hooray! You got five stars!',
+    again: 'Play again', other: 'Other games', repeat: 'Say it again', stars: n => `${n} of 5 stars`
+  },
+  ru: {
+    app: 'Динозаврики', tabDinos: 'Динозавры', tabGames: 'Игры', tapHint: 'Нажми на динозавра!',
+    filters: { all: 'Все', plants: 'Травоядные', meat: 'Хищники', seasky: 'Море и небо' },
+    credits: 'Голоса созданы с помощью Kokoro (английский, Apache 2.0) и голоса RUSLAN для Piper (русский, CC BY-NC-SA 4.0). Бесплатный некоммерческий сайт.',
+    foot: 'Размеры и даты — это оценки учёных по окаменелостям. Птеранодон, мозазавр и плезиозавр жили в одно время с динозаврами, но были другими пресмыкающимися.',
+    back: 'Назад', tapMe: 'Нажми на меня!', listen: 'Послушать', roar: 'Рычать!',
+    prev: 'Предыдущий динозавр', next: 'Следующий динозавр', soundOn: 'Звук включён', soundOff: 'Звук выключен',
+    eats: 'Ест', when: 'Когда', found: 'Где нашли', weight: 'Вес',
+    diet: { plants: 'Растения', meat: 'Мясо', fish: 'Рыбу', both: 'Растения и жуков' },
+    era: { jurassic: 'Юрский период', cretaceous: 'Меловой период' },
+    mya: v => `${v} млн лет назад`,
+    weightVal: kg => kg < 1000 ? `около ${kg} кг` : `около ${num(kg / 1000)} т`,
+    cmp: { cat: 'Весит как кошка', dog: 'Весит как большая собака', horse: 'Весит как лошадь', car: 'Весит как машина',
+      eleph: n => n === 1 ? 'Весит как слон' : `Весит как ${n} ${plural(n, 'слон', 'слона', 'слонов')}` },
+    sizeTitle: 'Какой длины?', wingTitle: 'Какие большие крылья?',
+    sizeText: (l, n) => `Длина ${num(l)} м. ` + (n === 1 ? 'Это примерно как твой рост!' : `Это как ${n} ${plural(n, 'малыш', 'малыша', 'малышей')} в ряд!`),
+    wingText: (l, n) => `Размах крыльев ${num(l)} м. Это как ${n} ${plural(n, 'малыш', 'малыша', 'малышей')} в ряд!`,
+    factsTitle: 'Интересные факты', sayFact: 'Прочитать факт вслух', quote: s => `«${s}»`,
+    bubble: { roar: 'Р-Р-Р!', rumble: 'У-У-УМ!', chirp: 'КР-Р-И!', honk: 'ТУ-У-У!', screech: 'КР-Р-А!', splash: 'ПЛЮХ!', bonk: 'БУМ!' },
+    g: {
+      find: { title: 'Найди динозавра', desc: 'Послушай и нажми на нужного.' },
+      eat: { title: 'Что он ест?', desc: 'Растения или мясо? Выбирай!' },
+      big: { title: 'Кто больше?', desc: 'Нажми на того, кто больше.' }
+    },
+    whereIs: n => `Где ${n}?`, whatEats: n => `Что ест ${n}?`, whoBigger: 'Кто больше?',
+    yesThis: n => `Да! Это ${n}!`, wrongThis: n => `Это ${n}. Попробуй ещё!`,
+    yesEats: (n, d) => `Да! ${n} ест ${d === 'plants' ? 'растения' : 'мясо'}!`, tryAgain: 'Хм, попробуй ещё!',
+    yesBigger: n => `Да! ${n} больше!`, wrongBigger: 'Этот поменьше. Попробуй ещё!',
+    plants: 'Растения', meat: 'Мясо', games: 'Игры',
+    win: 'Молодец!', winSub: 'Пять звёзд. Отличная работа!', winSay: 'Ура! У тебя пять звёзд!',
+    again: 'Играть ещё', other: 'Другие игры', repeat: 'Повторить', stars: n => `${n} из 5 звёзд`
+  }
+};
+
+const state = { lang: 'en', sound: true, view: 'list', dinoId: null, filter: 'all', game: null, tapped: false };
+const t = () => T[state.lang];
+const num = n => state.lang === 'ru' ? String(n).replace('.', ',') : String(n);
+const byId = id => DINOS.find(d => d.id === id);
+const L = d => d[state.lang];
+const habitat = d => ART[d.id].habitat || 'land';
+const cardName = d => L(d).short || L(d).name;
+const sayName = d => state.lang === 'en' ? (d.en.say || d.en.name) : d.ru.name;
+const midName = d => state.lang === 'en' ? sayName(d) : d.ru.name.toLowerCase();
+const icon = (id, vb = '0 0 24 24') => `<svg viewBox="${vb}" aria-hidden="true"><use href="#${id}"/></svg>`;
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const pickOne = (arr, avoid) => { const pool = arr.filter(x => x !== avoid); return pool[Math.floor(Math.random() * pool.length)]; };
+function art(id, label, extra = '') {
+  return renderArt(id, { label }).replace('<svg ', `<svg style="--bd:-${(Math.random() * 5).toFixed(2)}s;${extra}" `);
+}
+
+/* ---------- audio engine: recorded voice + synthesised dinosaur sounds ---------- */
+const Sound = (() => {
+  let ctx = null, sfxBus = null, voiceBus = null, noise = null, primed = false;
+  function ac() {
+    if (!ctx) {
+      const C = window.AudioContext || window.webkitAudioContext;
+      if (!C) return null;
+      try {
+        ctx = new C();
+        const comp = ctx.createDynamicsCompressor();
+        comp.threshold.value = -20; comp.knee.value = 10; comp.ratio.value = 6; comp.attack.value = 0.003; comp.release.value = 0.25;
+        const makeup = ctx.createGain(); makeup.gain.value = 1.4;
+        const limit = ctx.createDynamicsCompressor();
+        limit.threshold.value = -2; limit.knee.value = 0; limit.ratio.value = 20; limit.attack.value = 0.001; limit.release.value = 0.1;
+        comp.connect(makeup); makeup.connect(limit); limit.connect(ctx.destination);
+        sfxBus = comp;
+        voiceBus = ctx.createGain(); voiceBus.gain.value = 1; voiceBus.connect(ctx.destination);
+      } catch (e) { ctx = null; return null; }
+    }
+    // iOS reports "interrupted" (e.g. after a call or other audio), others "suspended"
+    if (ctx.state !== 'running') { try { ctx.resume(); } catch (e) {} }
+    return ctx;
+  }
+  // Called on every tap: wakes the audio context and, on iPhone, lets sound play with the ringer switch off.
+  function unlock() {
+    const c = ac(); if (!c) return;
+    try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch (e) {}
+    if (!primed) {
+      primed = true;
+      try { const b = c.createBuffer(1, 1, 22050), s = c.createBufferSource(); s.buffer = b; s.connect(c.destination); s.start(0); } catch (e) {}
+      try {
+        const el = document.createElement('audio');
+        el.setAttribute('playsinline', ''); el.setAttribute('x-webkit-airplay', 'deny'); el.preload = 'auto'; el.loop = true; el.volume = 0.01;
+        el.src = 'data:audio/wav;base64,UklGRmQGAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YUAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
+        const p = el.play(); if (p && p.catch) p.catch(() => {});
+      } catch (e) {}
+    }
+  }
+  const nb = c => { if (noise) return noise; const n = c.sampleRate * 2; noise = c.createBuffer(1, n, c.sampleRate); const d = noise.getChannelData(0); for (let i = 0; i < n; i++) d[i] = Math.random() * 2 - 1; return noise; };
+  const curve = k => { const n = 2048, a = new Float32Array(n); for (let i = 0; i < n; i++) { const x = i * 2 / n - 1; a[i] = (1 + k) * x / (1 + k * Math.abs(x)); } return a; };
+  function env(c, t, a, peak, d, out) { const g = c.createGain(); g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(peak, t + a); g.gain.setValueAtTime(peak, t + a + (d - a) * 0.35); g.gain.exponentialRampToValueAtTime(0.0001, t + d); g.connect(out || sfxBus); return g; }
+  function gain(c, v, out) { const g = c.createGain(); g.gain.value = v; g.connect(out); return g; }
+  function osc(c, type, f0, f1, t, d, out) { const o = c.createOscillator(); o.type = type; o.frequency.setValueAtTime(f0, t); if (f1) o.frequency.exponentialRampToValueAtTime(f1, t + d); o.connect(out); o.start(t); o.stop(t + d + 0.05); return o; }
+  function lfo(c, rate, depth, target, t, d) { const l = c.createOscillator(); l.frequency.value = rate; const g = c.createGain(); g.gain.value = depth; l.connect(g); g.connect(target); l.start(t); l.stop(t + d + 0.05); }
+  function filt(c, type, f, q, out) { const fl = c.createBiquadFilter(); fl.type = type; fl.frequency.value = f; fl.Q.value = q; fl.connect(out); return fl; }
+  function nz(c, t, d, out) { const s = c.createBufferSource(); s.buffer = nb(c); s.loop = true; s.connect(out); s.start(t); s.stop(t + d + 0.05); }
+  /* a growling "voice": buzzy source -> grit -> tremolo -> mouth-shaped (formant) filters, so it carries on phone speakers */
+  function growl(c, t, d, f0, f1, formants, peak, trem, attack) {
+    const out = env(c, t, attack, peak, d);
+    const mouth = c.createGain(); mouth.gain.value = 1;
+    formants.forEach(([f, q, g]) => mouth.connect(filt(c, 'bandpass', f, q, gain(c, g, out))));
+    const tr = c.createGain(); tr.gain.value = 0.65; tr.connect(mouth); lfo(c, trem, 0.35, tr.gain, t, d);
+    const ws = c.createWaveShaper(); ws.curve = curve(35); ws.connect(tr);
+    const o1 = osc(c, 'sawtooth', f0, f1, t, d, ws), o2 = osc(c, 'sawtooth', f0 * 1.49, f1 * 1.49, t, d, gain(c, 0.55, ws));
+    lfo(c, 6.5, f0 * 0.05, o1.frequency, t, d); lfo(c, 6.5, f0 * 0.07, o2.frequency, t, d);
+    return out;
+  }
+
+  const fx = {
+    roar(c, t, p) {
+      const d = 1.45;
+      growl(c, t, d, 150 * p, 72 * p, [[650, 3, 1.3], [1150, 4, 0.9], [2400, 5, 0.35]], 0.9, 31, 0.1);
+      nz(c, t, d, filt(c, 'bandpass', 900 * p, 0.8, env(c, t, 0.08, 0.3, d)));
+    },
+    rumble(c, t, p) {
+      const d = 1.6;
+      growl(c, t, d, 120 * p, 92 * p, [[420, 3, 1.3], [820, 4, 0.9], [1500, 5, 0.3]], 0.85, 13, 0.25);
+      osc(c, 'sine', 70 * p, 55 * p, t, d, env(c, t, 0.25, 0.4, d));
+    },
+    chirp(c, t, p) {
+      for (let i = 0; i < 3; i++) {
+        const tt = t + i * 0.16, out = env(c, tt, 0.01, 0.55, 0.14);
+        osc(c, 'triangle', 1100 * p, 2100 * p, tt, 0.12, out);
+        osc(c, 'square', 550 * p, 1050 * p, tt, 0.12, gain(c, 0.12, out));
+      }
+    },
+    honk(c, t, p) {
+      [0, 0.55].forEach((off, i) => {
+        const d = i ? 0.95 : 0.45, tt = t + off, out = env(c, tt, 0.06, 0.75, d), lp = filt(c, 'lowpass', 1600, 4, out);
+        const o1 = osc(c, 'sawtooth', 190 * p, 180 * p, tt, d, lp), o2 = osc(c, 'sawtooth', 285 * p, 270 * p, tt, d, gain(c, 0.5, lp));
+        lfo(c, 5.5, 5, o1.frequency, tt, d); lfo(c, 5.5, 7, o2.frequency, tt, d);
+      });
+    },
+    screech(c, t, p) {
+      const d = 0.9, out = env(c, t, 0.04, 0.6, d), bp = filt(c, 'bandpass', 1700 * p, 2.5, out);
+      const o = osc(c, 'sawtooth', 1500 * p, 850 * p, t, d, bp); lfo(c, 17, 70, o.frequency, t, d);
+      osc(c, 'sawtooth', 1000 * p, 560 * p, t, d, gain(c, 0.4, bp));
+    },
+    splash(c, t, p) {
+      const d = 0.95, out = env(c, t, 0.02, 0.95, d), lp = c.createBiquadFilter();
+      lp.type = 'lowpass'; lp.frequency.setValueAtTime(6000, t); lp.frequency.exponentialRampToValueAtTime(500, t + d); lp.connect(out);
+      nz(c, t, d, lp);
+      for (let i = 0; i < 6; i++) {
+        const tt = t + 0.3 + i * 0.1 + Math.random() * 0.05, bo = env(c, tt, 0.005, 0.4, 0.08);
+        osc(c, 'sine', (450 + Math.random() * 300) * p, (1000 + Math.random() * 500) * p, tt, 0.07, bo);
+      }
+    },
+    bonk(c, t, p) {
+      osc(c, 'sine', 220 * p, 70, t, 0.25, env(c, t, 0.004, 0.9, 0.3));
+      nz(c, t, 0.08, filt(c, 'bandpass', 1600, 1.5, env(c, t, 0.002, 0.8, 0.09)));
+      osc(c, 'triangle', 820 * p, 560 * p, t, 0.12, env(c, t, 0.002, 0.6, 0.14));
+      growl(c, t + 0.22, 0.55, 130 * p, 95 * p, [[500, 3, 1.2], [950, 4, 0.8]], 0.75, 22, 0.05);
+    },
+    pop(c, t) { osc(c, 'sine', 560, 950, t, 0.09, env(c, t, 0.005, 0.3, 0.12)); },
+    success(c, t) { [523, 659, 784, 1047].forEach((f, i) => osc(c, 'triangle', f, 0, t + i * 0.1, 0.2, env(c, t + i * 0.1, 0.01, 0.4, 0.22))); },
+    wrong(c, t) { osc(c, 'triangle', 330, 220, t, 0.25, env(c, t, 0.01, 0.4, 0.28)); osc(c, 'triangle', 262, 190, t + 0.2, 0.3, env(c, t + 0.2, 0.01, 0.35, 0.34)); },
+    fanfare(c, t) { [[523, 0], [659, .12], [784, .24], [1047, .36], [784, .56], [1047, .68]].forEach(([f, o]) => osc(c, 'triangle', f, 0, t + o, 0.22, env(c, t + o, 0.01, 0.45, o > .5 ? 0.5 : 0.22))); }
+  };
+  return {
+    play(name, p = 1) { if (!state.sound) return; const c = ac(); if (!c || !fx[name]) return; try { fx[name](c, c.currentTime + 0.03, p); } catch (e) {} },
+    unlock, ctx: () => ac(), voiceOut: () => (ac(), voiceBus)
+  };
+})();
+
+/* ---------- recorded voice lines (neural TTS, stored as audio packs next to the page) ---------- */
+const Voice = (() => {
+  const packs = {}, buffers = {};
+  let current = null, token = 0;
+  const b64 = s => { const bin = atob(s), u = new Uint8Array(bin.length); for (let i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i); return u.buffer; };
+  const decode = (c, buf) => new Promise((res, rej) => { const p = c.decodeAudioData(buf, res, rej); if (p && p.then) p.then(res, rej); });
+  function pack(lang, id) {
+    const k = lang + '/' + id;
+    if (!packs[k]) packs[k] = fetch(`audio/${lang}/${id}.json`).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .catch(e => { delete packs[k]; throw e; });
+    return packs[k];
+  }
+  function buffer(lang, id, key) {
+    const k = `${lang}/${id}/${key}`;
+    if (!buffers[k]) buffers[k] = pack(lang, id).then(p => { const c = Sound.ctx(); if (!c || !p[key]) throw new Error('no clip'); return decode(c, b64(p[key])); })
+      .catch(e => { delete buffers[k]; throw e; });
+    return buffers[k];
+  }
+  function stop() {
+    token++;
+    if (current) { const s = current; current = null; try { s.stop(); } catch (e) {} }
+    try { synth && synth.cancel(); } catch (e) {}
+  }
+  function say(id, key, text, onend) {
+    stop();
+    const my = token, lang = state.lang;
+    let done = false; const finish = () => { if (!done) { done = true; onend && onend(); } };
+    if (!state.sound) { if (onend) setTimeout(finish, 700); return; }
+    buffer(lang, id, key).then(buf => {
+      if (my !== token) return finish();
+      const c = Sound.ctx(), s = c.createBufferSource();
+      s.buffer = buf; s.connect(Sound.voiceOut()); s.onended = () => { if (current === s) current = null; finish(); };
+      current = s; s.start();
+    }).catch(() => { if (my === token) speakFallback(text, finish); else finish(); });
+  }
+  function preload(ids) { ids.forEach(id => pack(state.lang, id).catch(() => {})); }
+  return { say, stop, preload };
+})();
+
+/* device speech, used only if a recorded line can't be loaded */
+const synth = window.speechSynthesis;
+let voices = [];
+function loadVoices() { try { voices = synth ? synth.getVoices() : []; } catch (e) { voices = []; } }
+if (synth) { loadVoices(); try { synth.addEventListener('voiceschanged', loadVoices); } catch (e) {} }
+function pickVoice() {
+  const want = state.lang === 'ru' ? 'ru' : 'en';
+  const list = voices.filter(v => (v.lang || '').toLowerCase().startsWith(want));
+  return list.find(v => /natural|neural|premium|enhanced|google|siri/i.test(v.name)) || list[0] || null;
+}
+function speakFallback(text, finish) {
+  if (!synth || !text) { setTimeout(finish, 700); return; }
+  try {
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = state.lang === 'ru' ? 'ru-RU' : 'en-US';
+    const v = pickVoice(); if (v) u.voice = v;
+    u.rate = 0.95; u.onend = finish; u.onerror = finish;
+    setTimeout(finish, 1500 + text.length * 85);
+    synth.speak(u);
+  } catch (e) { setTimeout(finish, 700); }
+}
+const say = (id, key, text, onend) => Voice.say(id, key, text, onend);
+const hush = () => Voice.stop();
+
+/* ---------- scenes behind the big dinosaur ---------- */
+function scene(h) {
+  const top = `<svg class="scene" viewBox="0 0 400 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true">`;
+  const grad = (id, a, b) => `<defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(${a})"/><stop offset="1" style="stop-color:var(${b})"/></linearGradient></defs>`;
+  const cloud = (x, y, s) => `<g transform="translate(${x} ${y}) scale(${s})" style="fill:var(--cloud)" opacity=".92"><circle cx="0" cy="8" r="13"/><circle cx="18" cy="0" r="18"/><circle cx="38" cy="8" r="13"/><rect x="-10" y="6" width="58" height="16" rx="8"/></g>`;
+  if (h === 'sea') {
+    return top + grad('sg-sea', '--sea-top', '--sea-deep') +
+      `<rect width="400" height="300" fill="url(#sg-sea)"/>
+      <g fill="#FFFFFF" opacity=".1"><path d="M60 0h40L40 300H0z"/><path d="M190 0h30l-40 300h-50z"/><path d="M320 0h36l-20 300h-60z"/></g>
+      <path d="M0 262Q100 246 200 257T400 252V300H0Z" style="fill:var(--sand)"/>
+      <g fill="none" style="stroke:var(--weed)" stroke-width="8" stroke-linecap="round"><path d="M34 300C24 282 44 266 32 248S40 220 32 206"/><path d="M56 300C66 284 50 270 60 254"/><path d="M362 300C352 280 372 262 360 242S370 216 362 200"/><path d="M384 300C394 284 378 270 388 256"/></g>
+      <g transform="translate(300 60)"><path d="M0 0c8-8 22-8 28 0-6 8-20 8-28 0z" fill="#FFB347"/><path d="M26 0l10-7v14z" fill="#FFB347"/><circle cx="7" cy="-1" r="1.6" fill="#1b1d1a"/></g>
+      <g fill="none" stroke="#FFFFFF" stroke-width="2" opacity=".55"><circle cx="90" cy="70" r="5"/><circle cx="102" cy="48" r="3.5"/><circle cx="84" cy="34" r="2.5"/><circle cx="250" cy="40" r="4"/></g></svg>`;
+  }
+  if (h === 'sky') {
+    return top + grad('sg-sky', '--scene-sky', '--scene-sky2') +
+      `<rect width="400" height="300" fill="url(#sg-sky)"/>
+      <circle cx="332" cy="58" r="26" style="fill:var(--sun-disc)"/>
+      ${cloud(40, 40, 1)}${cloud(250, 120, .8)}${cloud(110, 150, .6)}
+      <path d="M0 268Q50 258 100 266T200 264T300 266T400 262V300H0Z" style="fill:var(--sea-top)"/>
+      <path d="M300 300L330 226Q352 214 372 228L400 240V300Z" style="fill:var(--volcano)"/>
+      <g fill="none" style="stroke:var(--ink)" stroke-width="2.2" stroke-linecap="round" opacity=".45"><path d="M60 100q6-6 12 0q6-6 12 0"/><path d="M92 86q5-5 10 0q5-5 10 0"/></g></svg>`;
+  }
+  return top + grad('sg-land', '--scene-sky', '--scene-sky2') +
+    `<rect width="400" height="300" fill="url(#sg-land)"/>
+    <circle cx="338" cy="52" r="24" style="fill:var(--sun-disc)"/>
+    ${cloud(210, 36, .8)}
+    <g style="fill:var(--smoke)"><circle cx="112" cy="104" r="10"/><circle cx="126" cy="88" r="13"/><circle cx="144" cy="70" r="16"/></g>
+    <path d="M26 226L96 122H132L210 226Z" style="fill:var(--volcano)"/>
+    <path d="M96 122H132L126 132L120 128L114 142L108 128L101 134Z" fill="#F0663A"/>
+    <path d="M0 212Q60 186 130 208T270 198T400 204V300H0Z" style="fill:var(--scene-far)"/>
+    <g style="fill:var(--scene-hill)"><rect x="344" y="150" width="9" height="80" rx="4"/><path d="M348 152c-16-14-34-12-44-2 16-2 30 2 44 2z"/><path d="M349 152c14-16 32-16 42-6-14-2-28 2-42 6z"/><path d="M348 150c-4-18-18-26-30-26 12 8 20 16 30 26z"/><path d="M349 150c6-18 20-24 32-22-12 6-22 12-32 22z"/></g>
+    <path d="M0 236Q100 220 200 230T400 226V300H0Z" style="fill:var(--scene-ground)"/>
+    <g style="fill:var(--scene-hill)"><path d="M0 300C4 270 18 252 34 246 26 262 20 280 22 300Z"/><path d="M14 300C24 276 42 264 60 262 46 274 36 286 34 300Z"/><path d="M400 300C396 272 384 256 368 250 376 266 382 282 380 300Z"/></g></svg>`;
+}
+
+/* food drawings for the "What does it eat?" game */
+const ILL_PLANT = `<svg class="ill" viewBox="0 0 120 110" aria-hidden="true"><g stroke="#2E5A2A" stroke-width="3" stroke-linejoin="round"><path d="M60 106C58 80 62 50 60 18" fill="none" stroke-linecap="round"/><path d="M60 30C40 12 22 16 16 24 28 38 46 40 60 34Z" fill="#6DBE5B"/><path d="M60 30C80 12 98 16 104 24 92 38 74 40 60 34Z" fill="#7FCB63"/><path d="M60 58C38 42 18 48 12 58 26 72 46 72 60 62Z" fill="#7FCB63"/><path d="M60 58C82 42 102 48 108 58 94 72 74 72 60 62Z" fill="#6DBE5B"/><path d="M60 84C44 72 30 76 24 84 34 94 50 94 60 88Z" fill="#6DBE5B"/><path d="M60 84C76 72 90 76 96 84 86 94 70 94 60 88Z" fill="#7FCB63"/><path d="M60 22C52 10 60 3 60 3S68 10 60 22Z" fill="#8FD86E"/></g></svg>`;
+const ILL_MEAT = `<svg class="ill" viewBox="0 0 120 110" aria-hidden="true"><path d="M30 86L54 60" stroke="#5A2E1C" stroke-width="17" stroke-linecap="round"/><g stroke="#5A2E1C" stroke-width="3"><circle cx="21" cy="84" r="8.5" fill="#FFF6E3"/><circle cx="30" cy="95" r="8.5" fill="#FFF6E3"/></g><path d="M30 86L54 60" stroke="#FFF6E3" stroke-width="10.5" stroke-linecap="round"/><path d="M46 60C36 44 44 18 68 12 92 6 112 24 106 48 100 72 70 80 52 70Z" fill="#C9683E" stroke="#5A2E1C" stroke-width="3" stroke-linejoin="round"/><path d="M64 24C76 20 88 24 94 32" fill="none" stroke="#E89A6E" stroke-width="5" stroke-linecap="round"/></svg>`;
+
+/* ---------- rendering ---------- */
+const FILTERS = [['all', 'i-all'], ['plants', 'i-leaf'], ['meat', 'i-meat'], ['seasky', 'i-wave']];
+const passes = (d, f) => f === 'all' ? true
+  : f === 'plants' ? (d.diet === 'plants' || d.diet === 'both') && habitat(d) === 'land'
+  : f === 'meat' ? d.diet !== 'plants' && habitat(d) === 'land'
+  : habitat(d) !== 'land';
+
+function renderStatic() {
+  document.documentElement.lang = state.lang;
+  document.querySelectorAll('[data-t]').forEach(el => { const v = t()[el.dataset.t]; if (typeof v === 'string') el.textContent = v; });
+  $('#lang-en').setAttribute('aria-pressed', String(state.lang === 'en'));
+  $('#lang-ru').setAttribute('aria-pressed', String(state.lang === 'ru'));
+  const s = $('#sound');
+  s.setAttribute('aria-pressed', String(state.sound));
+  s.setAttribute('aria-label', state.sound ? t().soundOn : t().soundOff);
+  s.innerHTML = icon(state.sound ? 'i-speaker' : 'i-mute');
+  $('#tab-dinos').setAttribute('aria-selected', String(state.view === 'list' || state.view === 'dino'));
+  $('#tab-games').setAttribute('aria-selected', String(state.view === 'games' || state.view === 'play'));
+}
+
+function renderList() {
+  $('#filters').innerHTML = FILTERS.map(([f, ic]) =>
+    `<button class="btn chip" type="button" data-act="filter" data-f="${f}" aria-pressed="${state.filter === f}">${icon(ic)}${t().filters[f]}</button>`).join('');
+  $('#grid').innerHTML = DINOS.filter(d => passes(d, state.filter)).map(d =>
+    `<button class="card" type="button" data-act="open" data-id="${d.id}" aria-label="${L(d).name}">
+      <span class="card-art ${habitat(d)}">${art(d.id)}</span>
+      <span class="card-name">${cardName(d)}</span></button>`).join('');
+}
+
+function weightCmp(kg) {
+  const c = t().cmp;
+  if (kg < 8) return c.cat; if (kg < 60) return c.dog; if (kg < 900) return c.horse; if (kg < 2500) return c.car;
+  if (kg < 7500) return c.eleph(1); return c.eleph(Math.round(kg / 5000));
+}
+
+function renderDino() {
+  const d = byId(state.dinoId), i = DINOS.indexOf(d), l = L(d), h = habitat(d), tt = t();
+  const n = Math.max(1, Math.round(d.len));
+  const dietIcon = d.diet === 'fish' ? 'i-fish' : d.diet === 'meat' ? 'i-meat' : 'i-leaf';
+  const stat = (cls, ic, label, value, sub) =>
+    `<div class="stat ${cls}"><span class="stat-ico">${icon(ic)}</span><div class="stat-body"><div class="stat-label">${label}</div><div class="stat-value">${value}</div>${sub ? `<div class="stat-sub">${sub}</div>` : ''}</div></div>`;
+  $('#view-dino').innerHTML = `
+    <div class="detail-nav">
+      <button class="btn" type="button" data-act="back">${icon('i-back')}<span>${tt.back}</span></button>
+      <div class="pager">
+        <button class="btn round" type="button" data-act="prev" aria-label="${tt.prev}">${icon('i-left')}</button>
+        <span class="counter">${i + 1} / ${DINOS.length}</span>
+        <button class="btn round" type="button" data-act="next" aria-label="${tt.next}">${icon('i-right')}</button>
+      </div>
+    </div>
+    <div class="detail-grid">
+      <div class="stage-col">
+        <div class="stage" id="stage">
+          ${scene(h)}
+          <button class="stage-dino ${h}" id="stage-dino" type="button" data-act="roar" aria-label="${tt.roar}">${art(d.id)}</button>
+          <span class="tap-me"${state.tapped ? ' hidden' : ''}>${icon('i-hand')}${tt.tapMe}</span>
+        </div>
+        <div class="name-block">
+          <h1 class="dino-name"><button type="button" data-act="name">${l.name}</button></h1>
+          <p class="meaning">${tt.quote(l.meaning)}</p>
+        </div>
+        <div class="actions">
+          <button class="btn btn-sun" type="button" data-act="listen">${icon('i-speaker')}${tt.listen}</button>
+          <button class="btn btn-lava" type="button" data-act="roar">${icon('i-roar')}${tt.roar}</button>
+        </div>
+      </div>
+      <div class="info-col">
+        <div class="stats">
+          ${stat('eats-' + d.diet, dietIcon, tt.eats, tt.diet[d.diet])}
+          ${stat('', 'i-clock', tt.when, tt.mya(d.mya), tt.era[d.era])}
+          ${stat('', 'i-pin', tt.found, l.where)}
+          ${stat('', 'i-weight', tt.weight, tt.weightVal(d.kg), weightCmp(d.kg))}
+        </div>
+        <div class="panel">
+          <h2>${d.wings ? tt.wingTitle : tt.sizeTitle}</h2>
+          <p>${d.wings ? tt.wingText(d.len, n) : tt.sizeText(d.len, n)}</p>
+          <div class="kids" aria-hidden="true">${Array.from({ length: n }, () => icon('i-kid', '0 0 16 26')).join('')}</div>
+        </div>
+        <div class="panel">
+          <h2>${tt.factsTitle}</h2>
+          <ol class="facts">${l.facts.map((f, k) => `<li><button class="btn btn-sun say" type="button" data-act="say" data-i="${k}" aria-label="${tt.sayFact}">${icon('i-speaker')}</button><span>${f}</span></li>`).join('')}</ol>
+        </div>
+      </div>
+    </div>`;
+  bindSwipe();
+}
+
+function bindSwipe() {
+  const st = $('#stage'); if (!st) return;
+  let sx = null, sy = 0;
+  st.addEventListener('pointerdown', e => { sx = e.clientX; sy = e.clientY; });
+  st.addEventListener('pointerup', e => {
+    if (sx === null) return;
+    const dx = e.clientX - sx, dy = e.clientY - sy; sx = null;
+    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.4) step(dx < 0 ? 1 : -1);
+  });
+}
+
+function renderGames() {
+  const tiles = [
+    ['find', `${art('trike', '', 'width:32%')}${art('stego', '', 'width:32%')}${art('trex', '', 'width:32%')}`],
+    ['eat', `${art('trex', '', 'width:46%')}${ILL_PLANT}${ILL_MEAT}`],
+    ['big', `${art('brachio', '', 'width:62%')}${art('compy', '', 'width:26%')}`]
+  ];
+  $('#view-games').innerHTML = `<div class="game-menu">${tiles.map(([g, pic]) =>
+    `<button class="game-tile" type="button" data-act="game" data-g="${g}">
+      <span class="game-art">${pic}</span>
+      <span class="game-title">${t().g[g].title}</span>
+      <span class="game-desc">${t().g[g].desc}</span></button>`).join('')}</div>`;
+}
+
+/* ---------- games ---------- */
+function startGame(type) {
+  state.game = { type, stars: 0, last: null, locked: false, won: false };
+  go('play');
+  newRound();
+}
+function newRound() {
+  const g = state.game; g.locked = false; g.won = false;
+  if (g.type === 'find') {
+    const target = pickOne(DINOS, g.last);
+    g.round = { target, options: shuffle([target, ...shuffle(DINOS.filter(d => d !== target)).slice(0, 2)]) };
+  } else if (g.type === 'eat') {
+    g.round = { target: pickOne(DINOS.filter(d => d.diet === 'plants' || d.diet === 'meat'), g.last) };
+  } else {
+    let a, b;
+    do { [a, b] = shuffle(DINOS); } while (Math.max(a.kg, b.kg) / Math.min(a.kg, b.kg) < 4 || a === g.last || b === g.last);
+    g.round = { options: [a, b], target: a.kg > b.kg ? a : b };
+  }
+  g.last = g.round.target;
+  renderPlay();
+  Voice.preload(['common', ...(g.round.options || [g.round.target]).map(d => d.id)]);
+  sayPrompt();
+}
+function promptText() {
+  const g = state.game, tt = t();
+  if (g.type === 'find') return tt.whereIs(midName(g.round.target));
+  if (g.type === 'eat') return tt.whatEats(midName(g.round.target));
+  return tt.whoBigger;
+}
+function sayPrompt() {
+  const g = state.game; if (!g) return;
+  if (g.type === 'find') say(g.round.target.id, 'where', promptText());
+  else if (g.type === 'eat') say(g.round.target.id, 'eats', promptText());
+  else say('common', 'bigger', promptText());
+}
+function starsHTML(n) { return Array.from({ length: 5 }, (_, i) => `<svg viewBox="0 0 24 24" class="${i < n ? 'on' : ''}" aria-hidden="true"><use href="#i-star"/></svg>`).join(''); }
+function playTop() {
+  const g = state.game;
+  return `<div class="play-top">
+    <button class="btn" type="button" data-act="games">${icon('i-back')}<span>${t().games}</span></button>
+    <div class="stars" id="stars" role="img" aria-label="${t().stars(g.stars)}">${starsHTML(g.stars)}</div></div>`;
+}
+function renderPlay() {
+  const g = state.game, tt = t();
+  if (g.won) return renderWin();
+  let body = '';
+  if (g.type === 'find') {
+    body = `<div class="choices">${g.round.options.map((d, i) =>
+      `<button class="choice ${habitat(d)}" type="button" data-act="choose" data-i="${i}" aria-label="${L(d).name}"><span class="ch-art">${art(d.id)}</span></button>`).join('')}</div>`;
+  } else if (g.type === 'eat') {
+    const d = g.round.target;
+    body = `<div class="eat-hero"><span class="card-art ${habitat(d)}">${art(d.id, L(d).name)}</span></div>
+      <div class="choices two">
+        <button class="choice food" type="button" data-act="choose" data-i="plants"><span class="ch-art">${ILL_PLANT}</span><span class="ch-label">${tt.plants}</span></button>
+        <button class="choice food meat" type="button" data-act="choose" data-i="meat"><span class="ch-art">${ILL_MEAT}</span><span class="ch-label">${tt.meat}</span></button>
+      </div>`;
+  } else {
+    const [a, b] = g.round.options, big = Math.max(a.len, b.len);
+    body = `<div class="choices two">${g.round.options.map((d, i) => {
+      const s = d === g.round.target ? 1 : Math.max(0.38, Math.sqrt(d.len / big));
+      return `<button class="choice ${habitat(d)}" type="button" data-act="choose" data-i="${i}" aria-label="${L(d).name}"><span class="ch-art big-art">${art(d.id, '', `transform:scale(${s.toFixed(2)})`)}</span><span class="ch-label">${cardName(d)}</span></button>`;
+    }).join('')}</div>`;
+  }
+  $('#view-play').innerHTML = `${playTop()}
+    <div class="prompt"><button class="btn btn-sun round" type="button" data-act="repeat" aria-label="${tt.repeat}">${icon('i-speaker')}</button><h2>${promptText()}</h2></div>${body}`;
+}
+function renderWin() {
+  const g = state.game, tt = t();
+  const d = g.winner || (g.winner = DINOS[Math.floor(Math.random() * DINOS.length)]);
+  $('#view-play').innerHTML = `${playTop()}
+    <div class="win"><div class="dance">${art(d.id, L(d).name)}</div>
+    <h2>${tt.win}</h2><p>${tt.winSub}</p>
+    <div class="win-actions">
+      <button class="btn btn-leaf" type="button" data-act="again">${icon('i-star')}${tt.again}</button>
+      <button class="btn" type="button" data-act="games">${icon('i-back')}${tt.other}</button>
+    </div></div>`;
+}
+function choose(btn) {
+  const g = state.game; if (!g || g.locked) return;
+  const tt = t(), key = btn.dataset.i;
+  let ok, yes, no;
+  if (g.type === 'find') {
+    const d = g.round.options[+key]; ok = d === g.round.target;
+    yes = [d.id, 'yes', tt.yesThis(midName(d))]; no = [d.id, 'wrong', tt.wrongThis(midName(d))];
+  } else if (g.type === 'eat') {
+    const d = g.round.target; ok = key === d.diet;
+    yes = [d.id, 'yesEats', tt.yesEats(sayName(d), d.diet)]; no = ['common', 'try', tt.tryAgain];
+  } else {
+    const d = g.round.options[+key]; ok = d === g.round.target;
+    yes = [d.id, 'big', tt.yesBigger(sayName(d))]; no = ['common', 'wrongBig', tt.wrongBigger];
+  }
+  if (!ok) {
+    btn.classList.remove('nope'); void btn.offsetWidth; btn.classList.add('nope');
+    Sound.play('wrong'); say(no[0], no[1], no[2]); return;
+  }
+  g.locked = true; g.stars++;
+  btn.classList.add('right');
+  const st = $('#stars'); if (st) { st.innerHTML = starsHTML(g.stars); st.setAttribute('aria-label', tt.stars(g.stars)); }
+  Sound.play('success'); confetti(28);
+  say(yes[0], yes[1], yes[2], () => setTimeout(() => {
+    if (state.view !== 'play' || state.game !== g) return;
+    if (g.stars >= 5) { g.won = true; renderWin(); Sound.play('fanfare'); confetti(70); say('common', 'win', tt.winSay); }
+    else newRound();
+  }, 350));
+}
+
+function confetti(n) {
+  if (reduced) return;
+  const box = $('#confetti'), colors = ['var(--sun)', 'var(--lava)', 'var(--leaf)', 'var(--blue)', 'var(--pink)'];
+  for (let i = 0; i < n; i++) {
+    const e = document.createElement('i');
+    e.style.left = (Math.random() * 100) + '%';
+    e.style.background = colors[i % colors.length];
+    e.style.animationDelay = (Math.random() * 0.4) + 's';
+    e.style.width = (8 + Math.random() * 8) + 'px';
+    e.style.setProperty('--rot', (Math.random() * 900 - 450) + 'deg');
+    box.appendChild(e);
+    setTimeout(() => e.remove(), 2500);
+  }
+}
+
+/* ---------- navigation ---------- */
+function go(view, opts = {}) {
+  state.view = view;
+  ['list', 'dino', 'games', 'play'].forEach(v => { $('#view-' + v).hidden = v !== view; });
+  if (view === 'list') renderList();
+  if (view === 'dino') renderDino();
+  if (view === 'games') { renderGames(); state.game = null; }
+  renderStatic();
+  if (!opts.keepScroll) window.scrollTo(0, 0);
+}
+function openDino(id) {
+  state.dinoId = id; go('dino');
+  Voice.preload([id]);
+  say(id, 'name', sayName(byId(id)));
+}
+function step(dir) {
+  const i = DINOS.findIndex(d => d.id === state.dinoId);
+  const d = DINOS[(i + dir + DINOS.length) % DINOS.length];
+  Sound.play('pop');
+  state.dinoId = d.id; go('dino', { keepScroll: true });
+  say(d.id, 'name', sayName(d));
+}
+function roar() {
+  const d = byId(state.dinoId), el = $('#stage-dino'); if (!el) return;
+  el.classList.remove('roaring'); void el.offsetWidth; el.classList.add('roaring');
+  Sound.play(d.sound, d.pitch);
+  state.tapped = true;
+  const tm = $('.tap-me'); if (tm) tm.hidden = true;
+  const stage = $('#stage'), old = stage.querySelector('.bubble'); if (old) old.remove();
+  const b = document.createElement('div'); b.className = 'bubble'; b.textContent = t().bubble[d.sound];
+  stage.appendChild(b); setTimeout(() => b.remove(), 1300);
+}
+function setLang(lang) {
+  if (lang === state.lang) return;
+  state.lang = lang; STORE.set('dino-lang', lang); hush();
+  if (state.view === 'play' && state.game) { renderStatic(); renderPlay(); if (!state.game.won) sayPrompt(); }
+  else go(state.view, { keepScroll: true });
+}
+
+document.addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  Sound.unlock();
+  const act = b.dataset.act;
+  if (b.id === 'lang-en' || b.id === 'lang-ru') { Sound.play('pop'); return setLang(b.dataset.lang); }
+  if (b.id === 'sound') { state.sound = !state.sound; STORE.set('dino-sound', state.sound ? '1' : '0'); if (!state.sound) hush(); else Sound.play('pop'); return renderStatic(); }
+  if (b.id === 'tab-dinos' || b.id === 'brand') { Sound.play('pop'); hush(); return go('list'); }
+  if (b.id === 'tab-games') { Sound.play('pop'); hush(); return go('games'); }
+  switch (act) {
+    case 'filter': Sound.play('pop'); state.filter = b.dataset.f; renderList(); break;
+    case 'open': Sound.play('pop'); openDino(b.dataset.id); break;
+    case 'back': Sound.play('pop'); hush(); go('list'); break;
+    case 'prev': step(-1); break;
+    case 'next': step(1); break;
+    case 'roar': roar(); break;
+    case 'name': say(state.dinoId, 'name', sayName(byId(state.dinoId))); break;
+    case 'listen': say(state.dinoId, 'hi', L(byId(state.dinoId)).hi); break;
+    case 'say': say(state.dinoId, 'f' + b.dataset.i, L(byId(state.dinoId)).facts[+b.dataset.i]); break;
+    case 'game': Sound.play('pop'); Voice.preload(['common']); startGame(b.dataset.g); break;
+    case 'games': Sound.play('pop'); hush(); go('games'); break;
+    case 'repeat': sayPrompt(); break;
+    case 'choose': choose(b); break;
+    case 'again': Sound.play('pop'); startGame(state.game ? state.game.type : 'find'); break;
+  }
+});
+document.addEventListener('keydown', e => {
+  if (state.view !== 'dino') return;
+  if (e.key === 'ArrowRight') step(1);
+  else if (e.key === 'ArrowLeft') step(-1);
+  else if (e.key === 'Escape') go('list');
+});
+
+/* ---------- start ---------- */
+function start(data) {
+  data = data || {};
+  const nav = (navigator.language || '').slice(0, 2).toLowerCase();
+  state.lang = data.lang || STORE.get('dino-lang') || (['ru', 'kk', 'uk', 'be'].includes(nav) ? 'ru' : 'en');
+  state.sound = STORE.get('dino-sound') !== '0';
+  state.filter = data.filter || 'all';
+  const hash = (location.hash || '').slice(1);
+  const id = data.dinoId || (byId(hash) ? hash : null);
+  if (data.view === 'dino' && id) { state.dinoId = id; go('dino'); }
+  else if (!data.view && byId(hash)) { state.dinoId = hash; go('dino'); }
+  else if (data.view === 'games' || hash === 'games') go('games');
+  else go('list');
+}
+try {
+  const hot = window.claude && window.claude.hot;
+  if (hot && hot.snapshot) hot.snapshot(() => ({ lang: state.lang, view: state.view === 'play' ? 'games' : state.view, dinoId: state.dinoId, filter: state.filter }));
+} catch (e) {}
+const hot = window.claude && window.claude.hot;
+if (hot && hot.ready) hot.ready(start); else start(hot && hot.data ? hot.data : {});
+})();
+
+</script>
+</body>
+</html>
